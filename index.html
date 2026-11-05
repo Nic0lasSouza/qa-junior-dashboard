@@ -3,672 +3,357 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QA Júnior — Dashboard de Estudos</title>
+<title>Plano de Estudo QA — Priorizado</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  
-  :root {
-    --bg: #0f1419;
-    --card: #1a2028;
-    --card-hover: #222a35;
-    --border: #2a3441;
-    --text: #e6edf3;
-    --text-dim: #8b949e;
-    --accent: #58a6ff;
-    --green: #3fb950;
-    --yellow: #d29922;
-    --red: #f85149;
-    --purple: #bc8cff;
+  :root{
+    --bg:#0f1117; --card:#1a1d27; --card2:#222633; --txt:#e6e8ef; --muted:#9aa0b0;
+    --green:#2ecc71; --blue:#4a9eff; --yellow:#f1c40f; --orange:#e67e22;
+    --purple:#9b59b6; --red:#e74c3c; --line:#2c3140; --p1:#e74c3c; --p2:#e67e22; --p3:#f1c40f;
   }
-  
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    padding: 40px 24px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  
-  /* HEADER */
-  header {
-    text-align: center;
-    margin-bottom: 48px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--border);
-  }
-  
-  header h1 {
-    font-size: 32px;
-    font-weight: 700;
-    background: linear-gradient(90deg, #58a6ff, #bc8cff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 8px;
-  }
-  
-  header p {
-    color: var(--text-dim);
-    font-size: 15px;
-  }
-  
-  /* PROGRESSO GERAL */
-  .global-progress {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin-bottom: 32px;
-  }
-  
-  .global-progress-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .global-progress-header span:first-child {
-    font-weight: 600;
-    font-size: 15px;
-  }
-  
-  .global-progress-header span:last-child {
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 18px;
-  }
-  
-  .progress-bar {
-    height: 10px;
-    background: var(--border);
-    border-radius: 5px;
-    overflow: hidden;
-  }
-  
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #3fb950, #58a6ff);
-    width: 0%;
-    transition: width 0.3s ease;
-    border-radius: 5px;
-  }
-  
-  /* CARDS DE CURSO */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 20px;
-    transition: all 0.2s ease;
-    border-left: 4px solid var(--border);
-  }
-  
-  .card:hover {
-    background: var(--card-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  }
-  
-  .card.alta { border-left-color: var(--red); }
-  .card.media { border-left-color: var(--yellow); }
-  .card.baixa { border-left-color: var(--text-dim); }
-  
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 8px;
-  }
-  
-  .card-title {
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--text);
-  }
-  
-  .badge {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-  }
-  
-  .badge.alta { background: rgba(248,81,73,0.15); color: var(--red); }
-  .badge.media { background: rgba(210,153,34,0.15); color: var(--yellow); }
-  .badge.baixa { background: rgba(139,148,158,0.15); color: var(--text-dim); }
-  
-  .meta {
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-bottom: 16px;
-  }
-  
-  .meta strong { color: var(--text); }
-  
-  /* SEÇÕES DENTRO DO CARD */
-  .section-title {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin: 16px 0 8px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  
-  .section-title.essencial { color: var(--red); }
-  .section-title.complementar { color: var(--yellow); }
-  .section-title.opcional { color: var(--text-dim); }
-  
-  /* LISTA DE AULAS */
-  ul.aulas { list-style: none; }
-  
-  ul.aulas li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 7px 0;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(42,52,65,0.5);
-  }
-  
-  ul.aulas li:last-child { border-bottom: none; }
-  
-  ul.aulas input[type="checkbox"] {
-    margin-top: 5px;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-    accent-color: var(--green);
-    flex-shrink: 0;
-  }
-  
-  ul.aulas label {
-    cursor: pointer;
-    flex: 1;
-    color: var(--text);
-    transition: color 0.15s;
-  }
-  
-  ul.aulas input:checked + label {
-    text-decoration: line-through;
-    color: var(--text-dim);
-  }
-  
-  .tag {
-    display: inline-block;
-    font-family: "SF Mono", Monaco, monospace;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 7px;
-    border-radius: 5px;
-    background: rgba(88,166,255,0.12);
-    color: var(--accent);
-    margin-right: 6px;
-    white-space: nowrap;
-  }
-  
-  /* CRONOGRAMA */
-  .timeline {
-    margin-top: 40px;
-  }
-  
-  .timeline h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--card);
-    border-radius: 12px;
-    overflow: hidden;
-    font-size: 13px;
-  }
-  
-  th {
-    background: rgba(88,166,255,0.1);
-    color: var(--accent);
-    font-weight: 700;
-    text-align: left;
-    padding: 12px 14px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
-  td {
-    padding: 12px 14px;
-    border-top: 1px solid var(--border);
-    color: var(--text);
-  }
-  
-  tr:hover td {
-    background: rgba(88,166,255,0.04);
-  }
-  
-  /* MELHORIAS */
-  .improvements {
-    margin-top: 40px;
-  }
-  
-  .improvements h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .improvement-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-  }
-  
-  .improvement-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    transition: all 0.2s ease;
-  }
-  
-  .improvement-card:hover {
-    background: var(--card-hover);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-  }
-  
-  .improvement-card .num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    background: linear-gradient(135deg, #58a6ff, #bc8cff);
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 10px;
-  }
-  
-  .improvement-card h3 {
-    font-size: 15px;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
-  
-  .improvement-card p {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-  
-  .impact {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 10px;
-    margin-top: 8px;
-    text-transform: uppercase;
-  }
-  
-  .impact.alto { background: rgba(63,185,80,0.15); color: var(--green); }
-  .impact.muito-alto { background: rgba(188,140,255,0.15); color: var(--purple); }
-  .impact.medio { background: rgba(210,153,34,0.15); color: var(--yellow); }
-  
-  /* FOOTER */
-  footer {
-    text-align: center;
-    margin-top: 60px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    color: var(--text-dim);
-    font-size: 13px;
-  }
-  
-  /* RESPONSIVO */
-  @media (max-width: 640px) {
-    body { padding: 20px 16px; }
-    header h1 { font-size: 24px; }
-    .card { padding: 18px; }
-    .card-title { font-size: 16px; }
-    table { font-size: 12px; }
-    th, td { padding: 8px 10px; }
-  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--txt);line-height:1.5;padding:20px}
+  .wrap{max-width:1050px;margin:0 auto}
+  h1{font-size:1.9rem;margin:0 0 4px}
+  .sub{color:var(--muted);margin-bottom:18px;font-size:.95rem}
+  h2{font-size:1.3rem;margin:32px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+  h3{font-size:1rem;margin:20px 0 6px;color:#fff}
+  .callout{border-radius:10px;padding:12px 14px;margin:12px 0;border-left:5px solid;font-size:.92rem}
+  .c-blue{background:#132033;border-color:var(--blue)}
+  .c-green{background:#12281b;border-color:var(--green)}
+  .c-yellow{background:#2b2510;border-color:var(--yellow)}
+  .c-orange{background:#2b1c0f;border-color:var(--orange)}
+  .c-purple{background:#221430;border-color:var(--purple)}
+  .c-red{background:#2b1414;border-color:var(--red)}
+  .callout strong{color:#fff}
+  ul.plain{margin:8px 0;padding-left:20px}
+
+  /* barra de progresso */
+  .progress{background:var(--card2);border-radius:20px;height:10px;overflow:hidden;margin:8px 0}
+  .progress > div{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));width:0;transition:width .3s}
+  #count{color:var(--muted);font-size:.85rem;margin:0}
+
+  /* filtros */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+  .filters button{background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:20px;
+    padding:6px 14px;cursor:pointer;font-size:.82rem;transition:.2s}
+  .filters button:hover{border-color:var(--blue)}
+  .filters button.active{background:var(--blue);color:#111;border-color:var(--blue);font-weight:700}
+
+  /* aula */
+  .lesson{background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:8px 12px;margin:5px 0;display:flex;align-items:center;gap:10px;font-size:.9rem}
+  .lesson input{margin:0;accent-color:var(--green);width:16px;height:16px;flex:none;cursor:pointer}
+  .lesson label{flex:1;cursor:pointer}
+  .lesson input:checked + label{opacity:.45;text-decoration:line-through}
+  .lesson .id{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.75rem;color:var(--yellow);
+    background:#2a2410;padding:1px 6px;border-radius:4px;white-space:nowrap}
+  .prio{font-size:.7rem;font-weight:800;padding:2px 7px;border-radius:10px;color:#111;flex:none;min-width:32px;text-align:center}
+  .p1{background:var(--p1);color:#fff}
+  .p2{background:var(--p2);color:#111}
+  .p3{background:var(--p3);color:#111}
+  .p4{background:var(--purple);color:#fff}
+  .hidden{display:none !important}
+
+  .course-head{background:var(--card2);border-radius:8px;padding:8px 14px;margin:18px 0 8px;
+    font-weight:700;color:#fff;font-size:.95rem;border-left:4px solid var(--blue)}
+
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.88rem}
+  th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+  th{background:var(--card2);color:#fff}
+  .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:12px 0}
+  .tool{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+  .tool b{color:#fff;font-size:.9rem}
+  .tool small{color:var(--muted);display:block;margin-top:3px;font-size:.8rem}
+  .reset{background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;
+    padding:8px 16px;cursor:pointer;font-size:.85rem;margin-top:16px}
+  .reset:hover{background:var(--red);color:#fff}
+  footer{color:var(--muted);text-align:center;margin:36px 0 10px;font-size:.8rem}
+  @media(max-width:600px){body{padding:12px}h1{font-size:1.4rem}.lesson{font-size:.85rem}}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header>
-  <h1>🎯 QA Júnior — Dashboard de Estudos</h1>
-  <p>Trilhas, cronograma e melhorias estratégicas para conquistar sua primeira vaga</p>
-</header>
+  <h1>🎯 Plano de Estudo QA — Priorizado</h1>
+  <p class="sub"><strong>P1</strong> = aprenda primeiro · <strong>P2</strong> = depois · <strong>P3</strong> = opcional · <strong>P4</strong> = só se a vaga pedir · <strong>1h vídeo = 30min prática</strong></p>
 
-<!-- PROGRESSO GERAL -->
-<div class="global-progress">
-  <div class="global-progress-header">
-    <span>📊 Progresso geral</span>
-    <span id="globalPct">0%</span>
+  <div class="progress"><div id="bar"></div></div>
+  <p id="count">0 de 0 concluídos</p>
+
+  <div class="filters">
+    <button class="active" data-filter="all">Tudo</button>
+    <button data-filter="p1">Só P1 (agora)</button>
+    <button data-filter="p2">Só P2</button>
+    <button data-filter="p3">Só P3</button>
+    <button data-filter="p4">Só P4</button>
+    <button data-filter="pending">Pendentes</button>
   </div>
-  <div class="progress-bar">
-    <div class="progress-fill" id="globalBar"></div>
+
+  <!-- ======================= P1 ======================= -->
+  <h2>🔴 P1 — Essencial (comece por aqui)</h2>
+
+  <div class="callout c-green">
+    <strong>Foco:</strong> fundamentos de teste + API manual + primeira automação + SQL básico.
+    Não avance para P2 antes de terminar P1.
   </div>
-</div>
 
-<!-- ======================== GUSTAVO FARIAS ======================== -->
-<div class="card alta">
-  <div class="card-header">
-    <div class="card-title">1. Curso Completo de Teste de Software</div>
-    <span class="badge alta">Alta prioridade</span>
+  <div class="course-head">Comunidade Tester Global (Pessoni)</div>
+
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a1"><label for="a1">O que é Teste e por onde começar <span class="id">#F005</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a2"><label for="a2">O que é Teste e por onde começar <span class="id">#F006</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a3"><label for="a3">Qualidade, Engenharia e Processos <span class="id">#F007</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a4"><label for="a4">Qualidade, Engenharia e Processos <span class="id">#F008</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a5"><label for="a5">Qualidade, Engenharia e Processos <span class="id">#F009</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a6"><label for="a6">Qualidade, Engenharia e Processos <span class="id">#F010</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a7"><label for="a7">O que testar, Quando e Como testar <span class="id">#F011</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a8"><label for="a8">O que testar, Quando e Como testar <span class="id">#F012</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a9"><label for="a9">O que testar, Quando e Como testar <span class="id">#F013</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a10"><label for="a10">O que testar, Quando e Como testar <span class="id">#F014</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a11"><label for="a11">O que testar, Quando e Como testar <span class="id">#F015</span></label></div>
+
+  <div class="course-head">Comunidade Tester Global — Automação de API</div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a12"><label for="a12">Automação de Testes de API <span class="id">#F016</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a13"><label for="a13">Automação de Testes de API <span class="id">#F017</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a14"><label for="a14">Automação de Testes de API <span class="id">#F018</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a15"><label for="a15">Automação de Testes de API <span class="id">#F019</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a16"><label for="a16">Automação de Testes de API <span class="id">#F020</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a17"><label for="a17">Automação de Testes de API <span class="id">#F021</span></label></div>
+
+  <div class="course-head">Gustavo Farias — Base de teste (opcional, curto)</div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a18"><label for="a18">Níveis de teste e quando testar <span class="id">#F10</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a19"><label for="a19">Níveis de teste e quando testar <span class="id">#F11</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a20"><label for="a20">Níveis de teste e quando testar <span class="id">#F12</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a21"><label for="a21">Níveis de teste e quando testar <span class="id">#F13</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a22"><label for="a22">Níveis de teste e quando testar <span class="id">#F14</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a23"><label for="a23">Níveis de teste e quando testar <span class="id">#F15</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a24"><label for="a24">Níveis de teste e quando testar <span class="id">#F16</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a25"><label for="a25">Níveis de teste e quando testar <span class="id">#F17</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a26"><label for="a26">Técnicas de teste: como testar <span class="id">#F18</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a27"><label for="a27">Técnicas de teste: como testar <span class="id">#F19</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a28"><label for="a28">Técnicas de teste: como testar <span class="id">#F20</span></label></div>
+
+  <div class="course-head">SQL Impressionador — recorte essencial</div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a29"><label for="a29">Banco de Dados e SQL — Introdução <span class="id">#F006</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a30"><label for="a30">Banco de Dados e SQL — Introdução <span class="id">#F007</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a31"><label for="a31">Banco de Dados e SQL — Introdução <span class="id">#F008</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a32"><label for="a32">Banco de Dados e SQL — Introdução <span class="id">#F009</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a33"><label for="a33">Banco de Dados e SQL — Introdução <span class="id">#F010</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a34"><label for="a34">Introdução ao SQL <span class="id">#F021</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a35"><label for="a35">Introdução ao SQL <span class="id">#F022</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a36"><label for="a36">Introdução ao SQL <span class="id">#F023</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a37"><label for="a37">Introdução ao SQL <span class="id">#F024</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a38"><label for="a38">Introdução ao SQL <span class="id">#F025</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a39"><label for="a39">Ordenando e filtrando dados <span class="id">#F036</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a40"><label for="a40">Ordenando e filtrando dados <span class="id">#F037</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a41"><label for="a41">Ordenando e filtrando dados <span class="id">#F038</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a42"><label for="a42">Ordenando e filtrando dados <span class="id">#F039</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a43"><label for="a43">Ordenando e filtrando dados <span class="id">#F040</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a44"><label for="a44">Funções de Agregação <span class="id">#F063</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a45"><label for="a45">Funções de Agregação <span class="id">#F064</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a46"><label for="a46">Funções de Agregação <span class="id">#F065</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a47"><label for="a47">Agrupamentos (GROUP BY) <span class="id">#F075</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a48"><label for="a48">Agrupamentos (GROUP BY) <span class="id">#F076</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a49"><label for="a49">Agrupamentos (GROUP BY) <span class="id">#F077</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a50"><label for="a50">JOINs <span class="id">#F093</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a51"><label for="a51">JOINs <span class="id">#F094</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a52"><label for="a52">JOINs <span class="id">#F095</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a53"><label for="a53">JOINs <span class="id">#F096</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a54"><label for="a54">JOINs <span class="id">#F097</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a55"><label for="a55">CRUD <span class="id">#F210</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a56"><label for="a56">CRUD <span class="id">#F211</span></label></div>
+  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="a57"><label for="a57">CRUD <span class="id">#F212</span></label></div>
+
+  <!-- ======================= P2 ======================= -->
+  <h2>🟠 P2 — Depois do P1 (automação e práticas)</h2>
+
+  <div class="callout c-orange">
+    <strong>Foco:</strong> Git, Cypress, testes de UI e complementos práticos.
   </div>
-  <p class="meta"><strong>Autor:</strong> Gustavo Farias · <strong>Foco:</strong> Base de testes manuais</p>
 
-  <div class="section-title essencial">🔴 Essencial — Foco total</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="g1"><label for="g1"><span class="tag">#F10–#F17</span> Módulo 03 — Níveis de teste / Quando testar</label></li>
-    <li><input type="checkbox" id="g2"><label for="g2"><span class="tag">#F18–#F20</span> Módulo 04 — Técnicas de teste / Como testar</label></li>
-    <li><input type="checkbox" id="g3"><label for="g3"><span class="tag">#F21–#F26</span> Módulo 05 — Tipos de teste / O que testar</label></li>
-    <li><input type="checkbox" id="g4"><label for="g4"><span class="tag">#F27–#F34</span> Módulo 06 — Quando e como os testes entram no desenvolvimento</label></li>
-    <li><input type="checkbox" id="g5"><label for="g5"><span class="tag">#F35–#F36</span> Módulo 07 — Concluindo o curso base</label></li>
-  </ul>
+  <div class="course-head">Ebac — GIT</div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b1"><label for="b1">GIT <span class="id">#F058</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b2"><label for="b2">GIT <span class="id">#F059</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b3"><label for="b3">GIT <span class="id">#F060</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b4"><label for="b4">GIT <span class="id">#F061</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b5"><label for="b5">GIT <span class="id">#F062</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b6"><label for="b6">GIT <span class="id">#F063</span></label></div>
 
-  <div class="section-title complementar">🟡 Complementar</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="g6"><label for="g6"><span class="tag">#F02–#F09</span> Módulo 02 — As empresas, os profissionais, a oportunidade</label></li>
-  </ul>
+  <div class="course-head">Ebac — Cypress Parte 1</div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b7"><label for="b7">Automação de UI com Cypress — Parte 1 <span class="id">#F064</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b8"><label for="b8">Automação de UI com Cypress — Parte 1 <span class="id">#F065</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b9"><label for="b9">Automação de UI com Cypress — Parte 1 <span class="id">#F066</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b10"><label for="b10">Automação de UI com Cypress — Parte 1 <span class="id">#F067</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b11"><label for="b11">Automação de UI com Cypress — Parte 1 <span class="id">#F068</span></label></div>
 
-  <div class="section-title opcional">⚪ Opcional (depois)</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="g7"><label for="g7"><span class="tag">#F37–#F52</span> Módulos 08 a 12 — Automação de testes</label></li>
-  </ul>
-</div>
+  <div class="course-head">Ebac — Cypress Parte 2</div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b12"><label for="b12">Automação de UI com Cypress — Parte 2 <span class="id">#F069</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b13"><label for="b13">Automação de UI com Cypress — Parte 2 <span class="id">#F070</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b14"><label for="b14">Automação de UI com Cypress — Parte 2 <span class="id">#F071</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b15"><label for="b15">Automação de UI com Cypress — Parte 2 <span class="id">#F072</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b16"><label for="b16">Automação de UI com Cypress — Parte 2 <span class="id">#F073</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b17"><label for="b17">Automação de UI com Cypress — Parte 2 <span class="id">#F074</span></label></div>
 
-<!-- ======================== SQL IMPRESSIONADOR ======================== -->
-<div class="card alta">
-  <div class="card-header">
-    <div class="card-title">2. SQL Impressionador</div>
-    <span class="badge alta">Alta prioridade</span>
+  <div class="course-head">Ebac — Testes de UI</div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b18"><label for="b18">Testes de UI <span class="id">#F052</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b19"><label for="b19">Testes de UI <span class="id">#F053</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b20"><label for="b20">Testes de UI <span class="id">#F054</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b21"><label for="b21">Testes de UI <span class="id">#F055</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b22"><label for="b22">Testes de UI <span class="id">#F056</span></label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="b23"><label for="b23">Testes de UI <span class="id">#F057</span></label></div>
+
+  <!-- ======================= P3 ======================= -->
+  <h2>🟡 P3 — Opcional (quando sobrar tempo)</h2>
+
+  <div class="callout c-yellow">
+    <strong>Foco:</strong> DevOps, Docker, métricas, segurança, CI. Escolha 2–3 conforme a vaga.
   </div>
-  <p class="meta"><strong>Autor:</strong> Mestre dos Cursos · <strong>Foco:</strong> Diferencial técnico mais pedido em vagas júnior</p>
 
-  <div class="section-title essencial">🔴 Essencial — Foco total</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="s1"><label for="s1"><span class="tag">#F021–#F035</span> Módulo 4 — Introdução ao SQL</label></li>
-    <li><input type="checkbox" id="s2"><label for="s2"><span class="tag">#F036–#F062</span> Módulo 5 — Ordenando e filtrando dados</label></li>
-    <li><input type="checkbox" id="s3"><label for="s3"><span class="tag">#F063–#F074</span> Módulo 6 — Funções de Agregação</label></li>
-    <li><input type="checkbox" id="s4"><label for="s4"><span class="tag">#F075–#F092</span> Módulo 7 — Criando agrupamentos</label></li>
-    <li><input type="checkbox" id="s5"><label for="s5"><span class="tag">#F093–#F120</span> Módulo 8 — JOINs</label></li>
-    <li><input type="checkbox" id="s6"><label for="s6"><span class="tag">#F121–#F132</span> Módulo 9 — Group By + Joins (aplicações)</label></li>
-  </ul>
+  <div class="course-head">Ebac — DevOps / Docker / CI</div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c1"><label for="c1">DevOps <span class="id">#F088</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c2"><label for="c2">DevOps <span class="id">#F089</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c3"><label for="c3">DevOps <span class="id">#F090</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c4"><label for="c4">Docker for Testers <span class="id">#F158</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c5"><label for="c5">Docker for Testers <span class="id">#F159</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c6"><label for="c6">Docker for Testers <span class="id">#F160</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c7"><label for="c7">Testes em Integração Contínua <span class="id">#F153</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c8"><label for="c8">Testes em Integração Contínua <span class="id">#F154</span></label></div>
 
-  <div class="section-title complementar">🟡 Complementar</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="s7"><label for="s7"><span class="tag">#F133–#F155</span> Módulo 10 — Variáveis</label></li>
-    <li><input type="checkbox" id="s8"><label for="s8"><span class="tag">#F156–#F178</span> Módulo 11 — Strings e Datas</label></li>
-    <li><input type="checkbox" id="s9"><label for="s9"><span class="tag">#F179–#F196</span> Módulo 12 — Funções Condicionais</label></li>
-    <li><input type="checkbox" id="s10"><label for="s10"><span class="tag">#F197–#F209</span> Módulo 13 — SQL Views</label></li>
-    <li><input type="checkbox" id="s11"><label for="s11"><span class="tag">#F231–#F258</span> Módulo 15 — Subqueries e CTE's</label></li>
-  </ul>
+  <div class="course-head">Ebac — Performance / Métricas / Segurança</div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c9"><label for="c9">Testes de Performance <span class="id">#F103</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c10"><label for="c10">Testes de Performance <span class="id">#F104</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c11"><label for="c11">Testes de Performance <span class="id">#F105</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c12"><label for="c12">Métricas de Qualidade <span class="id">#F179</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c13"><label for="c13">Métricas de Qualidade <span class="id">#F180</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c14"><label for="c14">Testes de Segurança <span class="id">#F189</span></label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="c15"><label for="c15">Testes de Segurança <span class="id">#F190</span></label></div>
 
-  <div class="section-title opcional">⚪ Opcional (depois)</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="s12"><label for="s12"><span class="tag">#F259–#F453</span> Módulos 16 a 30 — Loops, Window Functions, Functions, Procedures, Triggers, Pivot, integrações</label></li>
-  </ul>
-</div>
+  <!-- ======================= P4 ======================= -->
+  <h2>🟣 P4 — Só se a vaga pedir</h2>
 
-<!-- ======================== JÚLIO DE LIMA ======================== -->
-<div class="card alta">
-  <div class="card-header">
-    <div class="card-title">3. Programa de Testes e Qualidade de Software</div>
-    <span class="badge alta">Alta prioridade</span>
+  <div class="callout c-purple">
+    <strong>Foco:</strong> mobile, Nightwatch, Júlio de Lima, bônus. Deixe para quando estiver aplicando.
   </div>
-  <p class="meta"><strong>Autor:</strong> Júlio de Lima · <strong>Foco:</strong> Consolidação e mentalidade de QA</p>
 
-  <div class="section-title essencial">🔴 Essencial — Foco total</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="j1"><label for="j1"><span class="tag">#F001–#F006</span> Módulo 1 — Boas vindas e instruções gerais</label></li>
-    <li><input type="checkbox" id="j2"><label for="j2"><span class="tag">#F007–#F021</span> Módulo 2 — A Mentalidade do QA</label></li>
-    <li><input type="checkbox" id="j3"><label for="j3"><span class="tag">#F022–#F038</span> Módulo 3 — Testes no Modelo Cascata</label></li>
-    <li><input type="checkbox" id="j4"><label for="j4"><span class="tag">#F039–#F057</span> Módulo 4 — Testes em Contexto Ágil</label></li>
-    <li><input type="checkbox" id="j5"><label for="j5"><span class="tag">#F058–#F070</span> Módulo 5 — Arquitetura e Engenharia de Software para Testadores</label></li>
-  </ul>
+  <div class="course-head">Ebac — Mobile</div>
+  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="d1"><label for="d1">Testes Mobile — Parte 1 <span class="id">#F095</span></label></div>
+  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="d2"><label for="d2">Testes Mobile — Parte 1 <span class="id">#F096</span></label></div>
+  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="d3"><label for="d3">Testes Mobile — Parte 2 <span class="id">#F099</span></label></div>
+  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="d4"><label for="d4">Testes Mobile — Parte 2 <span class="id">#F100</span></label></div>
 
-  <div class="section-title complementar">🟡 Complementar</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="j6"><label for="j6"><span class="tag">#F071–#F101</span> Módulo 6 — Nivelamento Técnico em Java e SQL</label></li>
-    <li><input type="checkbox" id="j7"><label for="j7"><span class="tag">#F102–#F111</span> Módulo 7 — Técnicas de Revisão</label></li>
-    <li><input type="checkbox" id="j8"><label for="j8"><span class="tag">#F112–#F157</span> Módulo 8 — Identificando o que Testar</label></li>
-    <li><input type="checkbox" id="j9"><label for="j9"><span class="tag">#F158–#F181</span> Módulo 9 — Testes de API REST</label></li>
-    <li><input type="checkbox" id="j10"><label for="j10"><span class="tag">#F244–#F257</span> Módulo 13 — Gerindo Inconsistências</label></li>
-  </ul>
+  <div class="course-head">Júlio de Lima — consulta pontual</div>
+  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="d5"><label for="d5">Identificando o que testar <span class="id">#F112</span></label></div>
+  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="d6"><label for="d6">Identificando o que testar <span class="id">#F113</span></label></div>
+  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="d7"><label for="d7">Testes de API REST <span class="id">#F158</span></label></div>
+  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="d8"><label for="d8">Gerindo Inconsistências <span class="id">#F244</span></label></div>
 
-  <div class="section-title opcional">⚪ Opcional (depois)</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="j11"><label for="j11"><span class="tag">#F182–#F243</span> Módulos 10 a 12 — Testes Web, Mobile Android, Desktop</label></li>
-    <li><input type="checkbox" id="j12"><label for="j12"><span class="tag">#F258–#F300</span> Módulos 14 a 17 — Automação, Não Funcionais, Performance, Encerramento</label></li>
-    <li><input type="checkbox" id="j13"><label for="j13"><span class="tag">#F301–#F358</span> Módulos 18 a 21 — Bônus (entrevistas, LinkedIn, Git, lives)</label></li>
-  </ul>
-</div>
+  <!-- ======================= LACUNAS ======================= -->
+  <h2>🧩 Lacunas dos cursos — aprenda por fora (1–2 fins de semana)</h2>
 
-<!-- ======================== EBAC ======================== -->
-<div class="card media">
-  <div class="card-header">
-    <div class="card-title">4. Profissão: Engenheiro de Qualidade de Software</div>
-    <span class="badge media">Média prioridade</span>
+  <div class="callout c-blue">
+    Nenhum dos seus cursos cobre bem estas ferramentas. São simples e valem muito no currículo.
   </div>
-  <p class="meta"><strong>Autor:</strong> EBAC · <strong>Foco:</strong> Formação complementar estruturada</p>
 
-  <div class="section-title essencial">🔴 Essencial — Foco total</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="e1"><label for="e1"><span class="tag">#F015–#F020</span> Módulo 3 — Fundamentos de teste</label></li>
-    <li><input type="checkbox" id="e2"><label for="e2"><span class="tag">#F021–#F026</span> Módulo 4 — Técnicas de testes</label></li>
-    <li><input type="checkbox" id="e3"><label for="e3"><span class="tag">#F027–#F032</span> Módulo 5 — Planejamento e estratégia de teste</label></li>
-    <li><input type="checkbox" id="e4"><label for="e4"><span class="tag">#F033–#F038</span> Módulo 6 — Metodologias ágeis e Teste ágil</label></li>
-    <li><input type="checkbox" id="e5"><label for="e5"><span class="tag">#F039–#F045</span> Módulo 7 — Fluxo de trabalho do ágil</label></li>
-    <li><input type="checkbox" id="e6"><label for="e6"><span class="tag">#F046–#F051</span> Módulo 8 — Técnicas de teste Ágil</label></li>
-  </ul>
+  <div class="course-head">Aprender por fora</div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="e1"><label for="e1"><b>Jira</b> — criar projeto, abrir bug, mover card (YouTube: "Jira para QA iniciante")</label></div>
+  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="e2"><label for="e2"><b>GitHub Actions</b> — rodar seus testes Cypress num workflow (docs oficiais + 1 vídeo)</label></div>
+  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="e3"><label for="e3"><b>TestRail ou Qase</b> (free tier) — conhecer interface de gestão de testes</label></div>
 
-  <div class="section-title complementar">🟡 Complementar</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="e7"><label for="e7"><span class="tag">#F052–#F057</span> Módulo 9 — Testes de UI</label></li>
-    <li><input type="checkbox" id="e8"><label for="e8"><span class="tag">#F075–#F081</span> Módulo 13 — Testes de API e Contrato</label></li>
-    <li><input type="checkbox" id="e9"><label for="e9"><span class="tag">#F109–#F115</span> Módulo 19 — Banco de dados SQL e NoSQL</label></li>
-  </ul>
+  <!-- ======================= FERRAMENTAS ======================= -->
+  <h2>🧰 Ferramentas por prioridade</h2>
 
-  <div class="section-title opcional">⚪ Opcional (depois)</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="e10"><label for="e10"><span class="tag">#F058–#F074</span> Módulos 10 a 12 — Git, Cypress (partes 1 e 2)</label></li>
-    <li><input type="checkbox" id="e11"><label for="e11"><span class="tag">#F082–#F108</span> Módulos 14 a 18 — API REST automatizada, DevOps, Mobile, Performance</label></li>
-    <li><input type="checkbox" id="e12"><label for="e12"><span class="tag">#F116–#F196</span> Módulos 20 a 34 — JavaScript, testes de unidade, Cypress avançado, GraphQL, CI, Docker, iOS, métricas, segurança, projeto final</label></li>
-  </ul>
-</div>
-
-<!-- ======================== TESTER GLOBAL ======================== -->
-<div class="card media">
-  <div class="card-header">
-    <div class="card-title">5. Comunidade Tester Global 2.0</div>
-    <span class="badge media">Média prioridade</span>
-  </div>
-  <p class="meta"><strong>Autor:</strong> Vinicius Pessoni · <strong>Foco:</strong> Carreira, currículo e entrevistas</p>
-
-  <div class="section-title essencial">🔴 Essencial — Foco total</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="t1"><label for="t1"><span class="tag">#F005–#F006</span> Módulo 3 — O que é Teste e por onde começar</label></li>
-    <li><input type="checkbox" id="t2"><label for="t2"><span class="tag">#F007–#F010</span> Módulo 4 — Qualidade, Engenharia de Software e processos</label></li>
-    <li><input type="checkbox" id="t3"><label for="t3"><span class="tag">#F011–#F015</span> Módulo 5 — O que testar, Quando e Como Testar</label></li>
-  </ul>
-
-  <div class="section-title complementar">🟡 Complementar</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="t4"><label for="t4"><span class="tag">#F024–#F027</span> Módulo 8 — Criar currículo / Preparo para entrevistas</label></li>
-  </ul>
-
-  <div class="section-title opcional">⚪ Opcional (depois)</div>
-  <ul class="aulas">
-    <li><input type="checkbox" id="t5"><label for="t5"><span class="tag">#F016–#F023</span> Módulos 6 e 7 — Automação API e UI</label></li>
-    <li><input type="checkbox" id="t6"><label for="t6"><span class="tag">#F028–#F148</span> Módulos 9 a 16 — Liderança, métricas, bônus CTFL, Java, Appium, Git, mentorias</label></li>
-  </ul>
-</div>
-
-<!-- ======================== NIGHTWATCH ======================== -->
-<div class="card baixa">
-  <div class="card-header">
-    <div class="card-title">6. Automação para Zumbis com Nightwatch.js</div>
-    <span class="badge baixa">Baixa prioridade</span>
-  </div>
-  <p class="meta"><strong>Autor:</strong> QA Ninja · <strong>Foco:</strong> Ferramenta pouco requisitada — deixar para depois</p>
-  <ul class="aulas">
-    <li><input type="checkbox" id="n1"><label for="n1"><span class="tag">#F01–#F54</span> Curso inteiro — Nightwatch.js, Jenkins, Docker</label></li>
-  </ul>
-</div>
-
-<!-- ======================== AUTOMATIZAI ======================== -->
-<div class="card baixa">
-  <div class="card-header">
-    <div class="card-title">7. AutomatizAI</div>
-    <span class="badge baixa">Baixa prioridade</span>
-  </div>
-  <p class="meta"><strong>Autor:</strong> Mestre dos Cursos · <strong>Foco:</strong> Avançado (Playwright + IA) — só depois da base</p>
-  <ul class="aulas">
-    <li><input type="checkbox" id="a1"><label for="a1"><span class="tag">01</span> Primeiros passos</label></li>
-    <li><input type="checkbox" id="a2"><label for="a2"><span class="tag">02</span> Automação Core</label></li>
-    <li><input type="checkbox" id="a3"><label for="a3"><span class="tag">03</span> Inteligência Artificial</label></li>
-    <li><input type="checkbox" id="a4"><label for="a4"><span class="tag">04</span> Automação Pro</label></li>
-    <li><input type="checkbox" id="a5"><label for="a5"><span class="tag">05</span> CI/CD e TestOps</label></li>
-    <li><input type="checkbox" id="a6"><label for="a6"><span class="tag">06</span> Biblioteca de Prompts</label></li>
-  </ul>
-</div>
-
-<!-- ======================== CRONOGRAMA ======================== -->
-<div class="timeline">
-  <h2>📅 Cronograma — 12 semanas</h2>
   <table>
-    <thead>
-      <tr>
-        <th>Semana</th>
-        <th>Foco</th>
-        <th>Trilha</th>
-        <th>Aulas exatas</th>
-        <th>Meta prática</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td>Base de testes</td><td>Gustavo Farias</td><td><span class="tag">#F10–#F17</span></td><td>Escrever 5 casos de teste</td></tr>
-      <tr><td>2</td><td>Técnicas de teste</td><td>Gustavo Farias</td><td><span class="tag">#F18–#F20</span></td><td>Aplicar partição de equivalência e valor limite</td></tr>
-      <tr><td>3</td><td>Tipos de teste</td><td>Gustavo Farias</td><td><span class="tag">#F21–#F26</span></td><td>Criar 1 funcional, 1 regressão, 1 exploratório</td></tr>
-      <tr><td>4</td><td>Testes no desenvolvimento</td><td>Gustavo Farias</td><td><span class="tag">#F27–#F36</span></td><td>Simular bug report no Jira/Trello</td></tr>
-      <tr><td>5</td><td>SQL básico</td><td>SQL Impressionador</td><td><span class="tag">#F021–#F062</span></td><td>Criar e filtrar tabelas</td></tr>
-      <tr><td>6</td><td>SQL intermediário</td><td>SQL Impressionador</td><td><span class="tag">#F063–#F092</span></td><td>5 queries com agregação e agrupamento</td></tr>
-      <tr><td>7</td><td>SQL aplicado</td><td>SQL Impressionador</td><td><span class="tag">#F093–#F132</span></td><td>3 exercícios com JOIN + Group By</td></tr>
-      <tr><td>8</td><td>Consolidação QA</td><td>Júlio de Lima</td><td><span class="tag">#F001–#F038</span></td><td>Escrever plano de teste simples</td></tr>
-      <tr><td>9</td><td>QA em contexto ágil</td><td>Júlio de Lima</td><td><span class="tag">#F039–#F070</span></td><td>Mapear QA em time Scrum</td></tr>
-      <tr><td>10</td><td>Revisão + portfólio</td><td>Gustavo + SQL</td><td>Revisar essenciais</td><td>Publicar projeto no GitHub</td></tr>
-      <tr><td>11</td><td>Currículo e entrevista</td><td>Tester Global</td><td><span class="tag">#F024–#F027</span></td><td>Atualizar LinkedIn e currículo</td></tr>
-      <tr><td>12</td><td>Revisão geral</td><td>Todas</td><td>Pontos fracos</td><td>Simulado de entrevista</td></tr>
-    </tbody>
+    <tr><th>Prioridade</th><th>Ferramenta</th><th>Onde aprender</th><th>Para quê</th></tr>
+    <tr><td><span class="prio p1">P1</span></td><td>Postman / Insomnia</td><td>Pessoni #F016–#F021</td><td>Testar API REST manualmente</td></tr>
+    <tr><td><span class="prio p1">P1</span></td><td>SQL Server + SSMS</td><td>SQL Impressionador</td><td>Queries e banco de dados</td></tr>
+    <tr><td><span class="prio p2">P2</span></td><td>Git + GitHub</td><td>Ebac #F058–#F063</td><td>Versionar testes e portfólio</td></tr>
+    <tr><td><span class="prio p2">P2</span></td><td>Cypress</td><td>Ebac #F064–#F074</td><td>Automação de UI</td></tr>
+    <tr><td><span class="prio p2">P2</span></td><td>VS Code + Node/NPM</td><td>Nightwatch #F02–#F15</td><td>Editor e runtime</td></tr>
+    <tr><td><span class="prio p2">P2</span></td><td>Jira / Trello</td><td>Por fora (lacuna)</td><td>Gestão de bugs</td></tr>
+    <tr><td><span class="prio p3">P3</span></td><td>GitHub Actions / Jenkins</td><td>Ebac #F153–#F157</td><td>CI rodando testes</td></tr>
+    <tr><td><span class="prio p3">P3</span></td><td>Docker</td><td>Ebac #F158–#F162</td><td>Subir ambiente de teste</td></tr>
+    <tr><td><span class="prio p3">P3</span></td><td>JMeter / k6</td><td>Ebac #F103–#F108</td><td>Testes de performance</td></tr>
+    <tr><td><span class="prio p4">P4</span></td><td>Appium + Android Studio</td><td>Pessoni / Ebac mobile</td><td>Testes mobile</td></tr>
+    <tr><td><span class="prio p4">P4</span></td><td>Nightwatch.js</td><td>QA Ninja</td><td>Só se a vaga pedir</td></tr>
   </table>
-</div>
 
-<!-- ======================== MELHORIAS ======================== -->
-<div class="improvements">
-  <h2>🚀 Melhorias estratégicas</h2>
-  <div class="improvement-grid">
-    <div class="improvement-card">
-      <div class="num">1</div>
-      <h3>Aplicação prática</h3>
-      <p>Para cada módulo, produza algo concreto: casos de teste, queries SQL, bug reports. Teoria sem prática não vira portfólio.</p>
-      <span class="impact alto">Alto impacto</span>
-    </div>
-    <div class="improvement-card">
-      <div class="num">2</div>
-      <h3>Repositório GitHub</h3>
-      <p>Crie um repositório <code>qa-junior-portfolio</code> na Semana 1. Recrutador de QA júnior ama ver evidência prática.</p>
-      <span class="impact muito-alto">Muito alto</span>
-    </div>
-    <div class="improvement-card">
-      <div class="num">3</div>
-      <h3>Métricas de estudo</h3>
-      <p>Meta mínima: 8h/semana. Meta ideal: 12h/semana. Controle real evita a ilusão de "estou estudando muito".</p>
-      <span class="impact medio">Médio</span>
-    </div>
-    <div class="improvement-card">
-      <div class="num">4</div>
-      <h3>Simulados mensais</h3>
-      <p>A cada 4 semanas, faça um mini-simulado de entrevista. Entrevista é habilidade treinável — quem treina, passa.</p>
-      <span class="impact alto">Alto</span>
-    </div>
-    <div class="improvement-card">
-      <div class="num">5</div>
-      <h3>Diário de bugs</h3>
-      <p>Toda semana, encontre 1 bug real em apps como Nubank, iFood, Mercado Livre. Documente com evidência.</p>
-      <span class="impact muito-alto">Muito alto</span>
-    </div>
-    <div class="improvement-card">
-      <div class="num">6</div>
-      <h3>Inglês técnico</h3>
-      <p>15 min/dia lendo documentação em inglês. É o gargalo silencioso que trava promoções.</p>
-      <span class="impact alto">Alto</span>
-    </div>
-    <div class="improvement-card">
-      <div class="num">7</div>
-      <h3>Network no LinkedIn</h3>
-      <p>1 post/semana + comentar em 3 posts de QA + entrar em 2 comunidades. 60% das vagas júnior vêm de indicação.</p>
-      <span class="impact muito-alto">Muito alto</span>
-    </div>
+  <!-- ======================= CHECKLIST FINAL ======================= -->
+  <h2>✅ Checklist final — o que você PRECISA dominar</h2>
+  <ul class="plain">
+    <li>☐ Fundamentos: níveis, tipos e técnicas (partição, valor limite, tabela de decisão)</li>
+    <li>☐ Escrever casos de teste + bug report bem feito (Jira/Trello)</li>
+    <li>☐ Testes de API REST (Postman/Insomnia + automação)</li>
+    <li>☐ Automação de UI com Cypress (seletores, esperas, Page Object)</li>
+    <li>☐ SQL básico/intermediário (SELECT, JOIN, GROUP BY, subquery)</li>
+    <li>☐ Git/GitHub para versionar seus testes</li>
+    <li>☐ CI básico (GitHub Actions ou Jenkins rodando seus testes)</li>
+    <li>☐ Docker básico para subir ambiente de teste</li>
+  </ul>
+
+  <div class="callout c-green">
+    <strong>Dica final:</strong> monte um repositório no GitHub com seus testes Cypress + coleção Postman + queries SQL.
+    Isso vale mais que qualquer certificado na entrevista.
   </div>
-</div>
 
-<footer>
-  <p>💡 Foque no essencial primeiro · Revise a prioridade a cada 30 dias · Transforme estudo em evidência</p>
-</footer>
+  <button class="reset" onclick="resetar()">🔄 Resetar progresso</button>
+
+  <footer>Plano de Estudo QA · salve como <code>index.html</code> e publique no GitHub Pages</footer>
+</div>
 
 <script>
-  // Progresso geral — conta todos os checkboxes
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  const globalBar = document.getElementById('globalBar');
-  const globalPct = document.getElementById('globalPct');
+  const KEY = 'qa-plan-v2';
+  const boxes = [...document.querySelectorAll('.lesson input[type=checkbox]')];
+  const bar = document.getElementById('bar');
+  const count = document.getElementById('count');
+  const filters = document.querySelectorAll('.filters button');
+  let currentFilter = 'all';
 
-  function updateProgress() {
-    const total = checkboxes.length;
-    const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
-    globalBar.style.width = pct + '%';
-    globalPct.textContent = pct + '%';
-  }
-
-  checkboxes.forEach(cb => cb.addEventListener('change', updateProgress));
-  updateProgress();
-
-  // Salva estado no localStorage
-  checkboxes.forEach(cb => {
-    const saved = localStorage.getItem('qa_' + cb.id);
-    if (saved === 'true') cb.checked = true;
-    cb.addEventListener('change', () => {
-      localStorage.setItem('qa_' + cb.id, cb.checked);
-      updateProgress();
-    });
+  boxes.forEach((b,i)=>{
+    b.dataset.idx = i;
+    if(localStorage.getItem(KEY+'-'+i)==='1') b.checked = true;
+    b.addEventListener('change', ()=>{ save(); applyFilter(currentFilter); });
   });
-  updateProgress();
-</script>
 
+  function save(){
+    boxes.forEach(b=>localStorage.setItem(KEY+'-'+b.dataset.idx, b.checked?'1':'0'));
+    update();
+  }
+  function update(){
+    const done = boxes.filter(b=>b.checked).length;
+    const pct = boxes.length ? Math.round(done/boxes.length*100) : 0;
+    bar.style.width = pct+'%';
+    count.textContent = `${done} de ${boxes.length} concluídos (${pct}%)`;
+  }
+  function applyFilter(f){
+    currentFilter = f;
+    filters.forEach(btn=>btn.classList.toggle('active', btn.dataset.filter===f));
+    document.querySelectorAll('.lesson').forEach(el=>{
+      const prio = el.dataset.prio;
+      const checked = el.querySelector('input').checked;
+      let show = true;
+      if(f==='all') show = true;
+      else if(f==='pending') show = !checked;
+      else show = prio === f;
+      el.classList.toggle('hidden', !show);
+    });
+    // esconde cabeçalhos de curso sem itens visíveis
+    document.querySelectorAll('.course-head').forEach(head=>{
+      let next = head.nextElementSibling;
+      let hasVisible = false;
+      while(next && next.classList.contains('lesson')){
+        if(!next.classList.contains('hidden')) hasVisible = true;
+        next = next.nextElementSibling;
+      }
+      head.classList.toggle('hidden', !hasVisible);
+    });
+  }
+  filters.forEach(btn=>btn.addEventListener('click', ()=>applyFilter(btn.dataset.filter)));
+  function resetar(){
+    if(!confirm('Resetar todo o progresso?')) return;
+    boxes.forEach(b=>{b.checked=false;localStorage.removeItem(KEY+'-'+b.dataset.idx)});
+    update(); applyFilter(currentFilter);
+  }
+  update();
+</script>
 </body>
 </html>
