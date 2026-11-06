@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plano de Estudo QA — Completo e Priorizado</title>
+<title>Plano de Estudo QA — Ordem Certa de Aprendizado</title>
 <style>
   :root{
     --bg:#0f1117; --card:#1a1d27; --card2:#222633; --txt:#e6e8ef; --muted:#9aa0b0;
     --green:#2ecc71; --blue:#4a9eff; --yellow:#f1c40f; --orange:#e67e22;
-    --purple:#9b59b6; --red:#e74c3c; --line:#2c3140;
-    --p1:#e74c3c; --p2:#e67e22; --p3:#f1c40f; --p4:#9b59b6;
+    --purple:#9b59b6; --red:#e74c3c; --pink:#e84393; --line:#2c3140;
+    --f1:#2ecc71; --f2:#4a9eff; --f3:#e67e22; --f4:#e84393; --f5:#9b59b6; --f6:#f1c40f; --f7:#e74c3c;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -25,6 +25,7 @@
   .c-orange{background:#2b1c0f;border-color:var(--orange)}
   .c-purple{background:#221430;border-color:var(--purple)}
   .c-red{background:#2b1414;border-color:var(--red)}
+  .c-pink{background:#2b1020;border-color:var(--pink)}
   .callout strong{color:#fff}
 
   .progress{background:var(--card2);border-radius:20px;height:10px;overflow:hidden;margin:8px 0}
@@ -49,16 +50,52 @@
   .lesson input:checked + label{opacity:.4;text-decoration:line-through}
   .lesson .id{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.72rem;color:var(--yellow);
     background:#2a2410;padding:1px 5px;border-radius:4px;white-space:nowrap}
-  .prio{font-size:.65rem;font-weight:800;padding:2px 6px;border-radius:8px;color:#111;flex:none;min-width:28px;text-align:center}
-  .p1{background:var(--p1);color:#fff}
-  .p2{background:var(--p2);color:#111}
-  .p3{background:var(--p3);color:#111}
-  .p4{background:var(--p4);color:#fff}
+  .prio{font-size:.65rem;font-weight:800;padding:2px 6px;border-radius:8px;color:#111;flex:none;min-width:32px;text-align:center}
+  .f1{background:var(--f1);color:#111}
+  .f2{background:var(--f2);color:#111}
+  .f3{background:var(--f3);color:#111}
+  .f4{background:var(--f4);color:#fff}
+  .f5{background:var(--f5);color:#fff}
+  .f6{background:var(--f6);color:#111}
+  .f7{background:var(--f7);color:#fff}
   .hidden{display:none !important}
 
   .course-head{background:var(--card2);border-radius:8px;padding:8px 14px;margin:16px 0 6px;
     font-weight:700;color:#fff;font-size:.9rem;border-left:4px solid var(--blue)}
   .module-head{font-size:.8rem;color:var(--muted);margin:10px 0 4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+
+  /* Bloco de fase */
+  .fase{
+    border-radius:14px;padding:18px 20px;margin:28px 0 10px;position:relative;overflow:hidden;
+  }
+  .fase::before{content:'';position:absolute;top:0;left:0;bottom:0;width:6px}
+  .fase h2{margin:0 0 4px;border:none;padding:0;font-size:1.3rem}
+  .fase p{margin:0;font-size:.9rem;color:#cfd5e3}
+  .fase .fase-tag{
+    display:inline-block;font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:20px;
+    text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;color:#111;
+  }
+  .fase-1{background:linear-gradient(135deg,#12281b 0%,#0f1117 100%);border:1px solid var(--f1)}
+  .fase-1::before{background:var(--f1)}
+  .fase-1 .fase-tag{background:var(--f1)}
+  .fase-2{background:linear-gradient(135deg,#132033 0%,#0f1117 100%);border:1px solid var(--f2)}
+  .fase-2::before{background:var(--f2)}
+  .fase-2 .fase-tag{background:var(--f2)}
+  .fase-3{background:linear-gradient(135deg,#2b1c0f 0%,#0f1117 100%);border:1px solid var(--f3)}
+  .fase-3::before{background:var(--f3)}
+  .fase-3 .fase-tag{background:var(--f3)}
+  .fase-4{background:linear-gradient(135deg,#2b1020 0%,#0f1117 100%);border:1px solid var(--f4)}
+  .fase-4::before{background:var(--f4)}
+  .fase-4 .fase-tag{background:var(--f4)}
+  .fase-5{background:linear-gradient(135deg,#221430 0%,#0f1117 100%);border:1px solid var(--f5)}
+  .fase-5::before{background:var(--f5)}
+  .fase-5 .fase-tag{background:var(--f5);color:#fff}
+  .fase-6{background:linear-gradient(135deg,#2b2510 0%,#0f1117 100%);border:1px solid var(--f6)}
+  .fase-6::before{background:var(--f6)}
+  .fase-6 .fase-tag{background:var(--f6)}
+  .fase-7{background:linear-gradient(135deg,#2b1414 0%,#0f1117 100%);border:1px solid var(--f7)}
+  .fase-7::before{background:var(--f7)}
+  .fase-7 .fase-tag{background:var(--f7);color:#fff}
 
   table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.85rem}
   th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
@@ -73,8 +110,12 @@
 <body>
 <div class="wrap">
 
-  <h1>🎯 Plano de Estudo QA — Completo</h1>
-  <p class="sub"><strong>P1</strong> agora · <strong>P2</strong> depois · <strong>P3</strong> opcional · <strong>P4</strong> só se vaga pedir · 1h vídeo = 30min prática</p>
+  <h1>🎯 Plano de Estudo QA — Ordem Certa</h1>
+  <p class="sub"><strong>F1</strong> Postman · <strong>F2</strong> Git/GitHub · <strong>F3</strong> SQL · <strong>F4</strong> Jira + Bug Report · <strong>F5</strong> Cypress · <strong>F6</strong> CI/Docker · <strong>F7</strong> Opcional · 1h vídeo = 30min prática</p>
+
+  <div class="callout c-blue" style="font-size:.85rem">
+    <strong>📌 Ordem pensada para QA Júnior:</strong> você aprende a <b>testar API</b> (Postman) → <b>versionar</b> (Git) → <b>validar dados</b> (SQL) → <b>reportar bug</b> (Jira) → <b>automatizar UI</b> (Cypress) → <b>integrar</b> (CI/Docker). Cada fase usa o que você aprendeu na anterior.
+  </div>
 
   <div class="progress"><div id="bar"></div></div>
   <p id="count">0 de 0 concluídos</p>
@@ -85,442 +126,459 @@
 
   <div class="filters">
     <button class="active" data-filter="all">Tudo</button>
-    <button data-filter="p1">Só P1 (agora)</button>
-    <button data-filter="p2">Só P2</button>
-    <button data-filter="p3">Só P3</button>
-    <button data-filter="p4">Só P4</button>
-    <button data-filter="prog">Só Programação</button>
+    <button data-filter="f1">F1 Postman</button>
+    <button data-filter="f2">F2 Git</button>
+    <button data-filter="f3">F3 SQL</button>
+    <button data-filter="f4">F4 Jira/Bug</button>
+    <button data-filter="f5">F5 Cypress</button>
+    <button data-filter="f6">F6 CI/Docker</button>
+    <button data-filter="f7">F7 Opcional</button>
     <button data-filter="pending">Pendentes</button>
   </div>
 
-  <!-- ======================= P1 ======================= -->
-  <h2>🔴 P1 — Essencial (comece por aqui)</h2>
-  <div class="callout c-green"><strong>Foco:</strong> fundamentos + API manual + SQL básico. Não avance para P2 antes de terminar P1.</div>
+  <!-- ======================= FASE 1 ======================= -->
+  <div class="fase fase-1">
+    <span class="fase-tag">Fase 1 · Semanas 1–2</span>
+    <h2>📡 Postman — Testar API</h2>
+    <p>Primeira ferramenta do QA. Aprenda a testar endpoints, validar JSON e status code. <strong>Entregável:</strong> coleção exportada no GitHub com 5 GET + 2 POST.</p>
+  </div>
 
-  <div class="course-head">Comunidade Tester Global (Pessoni)</div>
+  <div class="course-head">Conceito antes da ferramenta (Pessoni)</div>
   <div class="module-head">1. O que é Teste e por onde começar</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_1"><label for="p1_1">O que é Teste e por onde começar <span class="id">#F005</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_2"><label for="p1_2">O que é Teste e por onde começar <span class="id">#F006</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_1"><label for="f1_1">O que é Teste e por onde começar <span class="id">#F005</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_2"><label for="f1_2">O que é Teste e por onde começar <span class="id">#F006</span></label></div>
   <div class="module-head">2. Qualidade, Engenharia e Processos</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_3"><label for="p1_3">Qualidade, Engenharia e Processos <span class="id">#F007</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_4"><label for="p1_4">Qualidade, Engenharia e Processos <span class="id">#F008</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_5"><label for="p1_5">Qualidade, Engenharia e Processos <span class="id">#F009</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_6"><label for="p1_6">Qualidade, Engenharia e Processos <span class="id">#F010</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_3"><label for="f1_3">Qualidade, Engenharia e Processos <span class="id">#F007</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_4"><label for="f1_4">Qualidade, Engenharia e Processos <span class="id">#F008</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_5"><label for="f1_5">Qualidade, Engenharia e Processos <span class="id">#F009</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_6"><label for="f1_6">Qualidade, Engenharia e Processos <span class="id">#F010</span></label></div>
   <div class="module-head">3. O que testar, Quando e Como testar</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_7"><label for="p1_7">O que testar, Quando e Como testar <span class="id">#F011</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_8"><label for="p1_8">O que testar, Quando e Como testar <span class="id">#F012</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_9"><label for="p1_9">O que testar, Quando e Como testar <span class="id">#F013</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_10"><label for="p1_10">O que testar, Quando e Como testar <span class="id">#F014</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_11"><label for="p1_11">O que testar, Quando e Como testar <span class="id">#F015</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_7"><label for="f1_7">O que testar, Quando e Como testar <span class="id">#F011</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_8"><label for="f1_8">O que testar, Quando e Como testar <span class="id">#F012</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_9"><label for="f1_9">O que testar, Quando e Como testar <span class="id">#F013</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_10"><label for="f1_10">O que testar, Quando e Como testar <span class="id">#F014</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_11"><label for="f1_11">O que testar, Quando e Como testar <span class="id">#F015</span></label></div>
 
-  <div class="course-head">Pessoni — Automação de API</div>
+  <div class="course-head">Postman — Automação de API (Pessoni)</div>
   <div class="module-head">4. Automação de Testes de API</div>
   <div class="callout c-yellow" style="font-size:.82rem;margin:6px 0 10px">
-    <strong>⚠️ Atenção:</strong> este módulo usa <b>Java + IntelliJ IDEA + Postman</b> como <b>ferramentas para automatizar testes</b>, não como curso de programação Java. Se você quiser base sólida de linguagem, veja a seção <b>"Programação — aprender por fora"</b> no final da página.
+    <strong>⚠️ Atenção:</strong> este módulo usa <b>Java + IntelliJ IDEA + Postman</b> como <b>ferramentas para automatizar testes</b>, não como curso de programação Java. Foco: Postman primeiro; Java/IntelliJ depois, se quiser automatizar.
   </div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_12"><label for="p1_12">Automação de Testes de API <span class="id">#F016</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_13"><label for="p1_13">Automação de Testes de API <span class="id">#F017</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_14"><label for="p1_14">Automação de Testes de API <span class="id">#F018</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_15"><label for="p1_15">Automação de Testes de API <span class="id">#F019</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_16"><label for="p1_16">Automação de Testes de API <span class="id">#F020</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_17"><label for="p1_17">Automação de Testes de API <span class="id">#F021</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_12"><label for="f1_12">Automação de Testes de API <span class="id">#F016</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_13"><label for="f1_13">Automação de Testes de API <span class="id">#F017</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_14"><label for="f1_14">Automação de Testes de API <span class="id">#F018</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_15"><label for="f1_15">Automação de Testes de API <span class="id">#F019</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_16"><label for="f1_16">Automação de Testes de API <span class="id">#F020</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_17"><label for="f1_17">Automação de Testes de API <span class="id">#F021</span></label></div>
 
-  <div class="course-head">Gustavo Farias — Base de teste</div>
-  <div class="module-head">Módulo 03 — Níveis de teste e quando testar</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_18"><label for="p1_18">Níveis de teste e quando testar <span class="id">#F10</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_19"><label for="p1_19">Níveis de teste e quando testar <span class="id">#F11</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_20"><label for="p1_20">Níveis de teste e quando testar <span class="id">#F12</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_21"><label for="p1_21">Níveis de teste e quando testar <span class="id">#F13</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_22"><label for="p1_22">Níveis de teste e quando testar <span class="id">#F14</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_23"><label for="p1_23">Níveis de teste e quando testar <span class="id">#F15</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_24"><label for="p1_24">Níveis de teste e quando testar <span class="id">#F16</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_25"><label for="p1_25">Níveis de teste e quando testar <span class="id">#F17</span></label></div>
-  <div class="module-head">Módulo 04 — Técnicas de teste: como testar</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_26"><label for="p1_26">Técnicas de teste: como testar <span class="id">#F18</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_27"><label for="p1_27">Técnicas de teste: como testar <span class="id">#F19</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_28"><label for="p1_28">Técnicas de teste: como testar <span class="id">#F20</span></label></div>
+  <div class="course-head">Júlio de Lima — API REST (aulas essenciais por aula)</div>
+  <div class="module-head">09. Testes de API REST</div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_18"><label for="f1_18">Introdução a APIs <span class="id">#F158</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_19"><label for="f1_19">Métodos HTTP <span class="id">#F160</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_20"><label for="f1_20">Status codes <span class="id">#F161</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_21"><label for="f1_21">JSON <span class="id">#F162</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_22"><label for="f1_22">Postman — Introdução <span class="id">#F163</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_23"><label for="f1_23">Primeira requisição <span class="id">#F164</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_24"><label for="f1_24">GET <span class="id">#F165</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_25"><label for="f1_25">POST <span class="id">#F166</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_26"><label for="f1_26">Validações de resposta <span class="id">#F169</span></label></div>
+  <div class="lesson" data-prio="f1"><span class="prio f1">F1</span><input type="checkbox" id="f1_27"><label for="f1_27">Collections <span class="id">#F172</span></label></div>
 
-  <div class="course-head">SQL Impressionador — recorte essencial</div>
-  <div class="module-head">2. Banco de Dados e SQL — Introdução</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_29"><label for="p1_29">Banco de Dados e SQL — Introdução <span class="id">#F006</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_30"><label for="p1_30">Banco de Dados e SQL — Introdução <span class="id">#F007</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_31"><label for="p1_31">Banco de Dados e SQL — Introdução <span class="id">#F008</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_32"><label for="p1_32">Banco de Dados e SQL — Introdução <span class="id">#F009</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_33"><label for="p1_33">Banco de Dados e SQL — Introdução <span class="id">#F010</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_34"><label for="p1_34">Banco de Dados e SQL — Introdução <span class="id">#F011</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_35"><label for="p1_35">Banco de Dados e SQL — Introdução <span class="id">#F012</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_36"><label for="p1_36">Banco de Dados e SQL — Introdução <span class="id">#F013</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_37"><label for="p1_37">Banco de Dados e SQL — Introdução <span class="id">#F014</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_38"><label for="p1_38">Banco de Dados e SQL — Introdução <span class="id">#F015</span></label></div>
-
-  <div class="module-head">3. Instalação SQL Server + SSMS</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_39"><label for="p1_39">Instalação SQL Server + SSMS <span class="id">#F016</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_40"><label for="p1_40">Instalação SQL Server + SSMS <span class="id">#F017</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_41"><label for="p1_41">Instalação SQL Server + SSMS <span class="id">#F018</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_42"><label for="p1_42">Instalação SQL Server + SSMS <span class="id">#F019</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_43"><label for="p1_43">Instalação SQL Server + SSMS <span class="id">#F020</span></label></div>
-
-  <div class="module-head">4. Introdução ao SQL</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_44"><label for="p1_44">Introdução ao SQL <span class="id">#F021</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_45"><label for="p1_45">Introdução ao SQL <span class="id">#F022</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_46"><label for="p1_46">Introdução ao SQL <span class="id">#F023</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_47"><label for="p1_47">Introdução ao SQL <span class="id">#F024</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_48"><label for="p1_48">Introdução ao SQL <span class="id">#F025</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_49"><label for="p1_49">Introdução ao SQL <span class="id">#F026</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_50"><label for="p1_50">Introdução ao SQL <span class="id">#F027</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_51"><label for="p1_51">Introdução ao SQL <span class="id">#F028</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_52"><label for="p1_52">Introdução ao SQL <span class="id">#F029</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_53"><label for="p1_53">Introdução ao SQL <span class="id">#F030</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_54"><label for="p1_54">Introdução ao SQL <span class="id">#F031</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_55"><label for="p1_55">Introdução ao SQL <span class="id">#F032</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_56"><label for="p1_56">Introdução ao SQL <span class="id">#F033</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_57"><label for="p1_57">Introdução ao SQL <span class="id">#F034</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_58"><label for="p1_58">Introdução ao SQL <span class="id">#F035</span></label></div>
-
-  <div class="module-head">5. Ordenando e filtrando dados</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_59"><label for="p1_59">Ordenando e filtrando dados <span class="id">#F036</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_60"><label for="p1_60">Ordenando e filtrando dados <span class="id">#F037</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_61"><label for="p1_61">Ordenando e filtrando dados <span class="id">#F038</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_62"><label for="p1_62">Ordenando e filtrando dados <span class="id">#F039</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_63"><label for="p1_63">Ordenando e filtrando dados <span class="id">#F040</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_64"><label for="p1_64">Ordenando e filtrando dados <span class="id">#F041</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_65"><label for="p1_65">Ordenando e filtrando dados <span class="id">#F042</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_66"><label for="p1_66">Ordenando e filtrando dados <span class="id">#F043</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_67"><label for="p1_67">Ordenando e filtrando dados <span class="id">#F044</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_68"><label for="p1_68">Ordenando e filtrando dados <span class="id">#F045</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_69"><label for="p1_69">Ordenando e filtrando dados <span class="id">#F046</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_70"><label for="p1_70">Ordenando e filtrando dados <span class="id">#F047</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_71"><label for="p1_71">Ordenando e filtrando dados <span class="id">#F048</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_72"><label for="p1_72">Ordenando e filtrando dados <span class="id">#F049</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_73"><label for="p1_73">Ordenando e filtrando dados <span class="id">#F050</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_74"><label for="p1_74">Ordenando e filtrando dados <span class="id">#F051</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_75"><label for="p1_75">Ordenando e filtrando dados <span class="id">#F052</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_76"><label for="p1_76">Ordenando e filtrando dados <span class="id">#F053</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_77"><label for="p1_77">Ordenando e filtrando dados <span class="id">#F054</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_78"><label for="p1_78">Ordenando e filtrando dados <span class="id">#F055</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_79"><label for="p1_79">Ordenando e filtrando dados <span class="id">#F056</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_80"><label for="p1_80">Ordenando e filtrando dados <span class="id">#F057</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_81"><label for="p1_81">Ordenando e filtrando dados <span class="id">#F058</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_82"><label for="p1_82">Ordenando e filtrando dados <span class="id">#F059</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_83"><label for="p1_83">Ordenando e filtrando dados <span class="id">#F060</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_84"><label for="p1_84">Ordenando e filtrando dados <span class="id">#F061</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_85"><label for="p1_85">Ordenando e filtrando dados <span class="id">#F062</span></label></div>
-
-  <div class="module-head">6. Funções de Agregação</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_86"><label for="p1_86">Funções de Agregação <span class="id">#F063</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_87"><label for="p1_87">Funções de Agregação <span class="id">#F064</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_88"><label for="p1_88">Funções de Agregação <span class="id">#F065</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_89"><label for="p1_89">Funções de Agregação <span class="id">#F066</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_90"><label for="p1_90">Funções de Agregação <span class="id">#F067</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_91"><label for="p1_91">Funções de Agregação <span class="id">#F068</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_92"><label for="p1_92">Funções de Agregação <span class="id">#F069</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_93"><label for="p1_93">Funções de Agregação <span class="id">#F070</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_94"><label for="p1_94">Funções de Agregação <span class="id">#F071</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_95"><label for="p1_95">Funções de Agregação <span class="id">#F072</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_96"><label for="p1_96">Funções de Agregação <span class="id">#F073</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_97"><label for="p1_97">Funções de Agregação <span class="id">#F074</span></label></div>
-
-  <div class="module-head">7. Criando agrupamentos no SQL</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_98"><label for="p1_98">Criando agrupamentos no SQL <span class="id">#F075</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_99"><label for="p1_99">Criando agrupamentos no SQL <span class="id">#F076</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_100"><label for="p1_100">Criando agrupamentos no SQL <span class="id">#F077</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_101"><label for="p1_101">Criando agrupamentos no SQL <span class="id">#F078</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_102"><label for="p1_102">Criando agrupamentos no SQL <span class="id">#F079</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_103"><label for="p1_103">Criando agrupamentos no SQL <span class="id">#F080</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_104"><label for="p1_104">Criando agrupamentos no SQL <span class="id">#F081</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_105"><label for="p1_105">Criando agrupamentos no SQL <span class="id">#F082</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_106"><label for="p1_106">Criando agrupamentos no SQL <span class="id">#F083</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_107"><label for="p1_107">Criando agrupamentos no SQL <span class="id">#F084</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_108"><label for="p1_108">Criando agrupamentos no SQL <span class="id">#F085</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_109"><label for="p1_109">Criando agrupamentos no SQL <span class="id">#F086</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_110"><label for="p1_110">Criando agrupamentos no SQL <span class="id">#F087</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_111"><label for="p1_111">Criando agrupamentos no SQL <span class="id">#F088</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_112"><label for="p1_112">Criando agrupamentos no SQL <span class="id">#F089</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_113"><label for="p1_113">Criando agrupamentos no SQL <span class="id">#F090</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_114"><label for="p1_114">Criando agrupamentos no SQL <span class="id">#F091</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_115"><label for="p1_115">Criando agrupamentos no SQL <span class="id">#F092</span></label></div>
-
-  <div class="module-head">8. JOINs no SQL</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_116"><label for="p1_116">JOINs no SQL <span class="id">#F093</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_117"><label for="p1_117">JOINs no SQL <span class="id">#F094</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_118"><label for="p1_118">JOINs no SQL <span class="id">#F095</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_119"><label for="p1_119">JOINs no SQL <span class="id">#F096</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_120"><label for="p1_120">JOINs no SQL <span class="id">#F097</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_121"><label for="p1_121">JOINs no SQL <span class="id">#F098</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_122"><label for="p1_122">JOINs no SQL <span class="id">#F099</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_123"><label for="p1_123">JOINs no SQL <span class="id">#F100</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_124"><label for="p1_124">JOINs no SQL <span class="id">#F101</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_125"><label for="p1_125">JOINs no SQL <span class="id">#F102</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_126"><label for="p1_126">JOINs no SQL <span class="id">#F103</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_127"><label for="p1_127">JOINs no SQL <span class="id">#F104</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_128"><label for="p1_128">JOINs no SQL <span class="id">#F105</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_129"><label for="p1_129">JOINs no SQL <span class="id">#F106</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_130"><label for="p1_130">JOINs no SQL <span class="id">#F107</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_131"><label for="p1_131">JOINs no SQL <span class="id">#F108</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_132"><label for="p1_132">JOINs no SQL <span class="id">#F109</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_133"><label for="p1_133">JOINs no SQL <span class="id">#F110</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_134"><label for="p1_134">JOINs no SQL <span class="id">#F111</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_135"><label for="p1_135">JOINs no SQL <span class="id">#F112</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_136"><label for="p1_136">JOINs no SQL <span class="id">#F113</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_137"><label for="p1_137">JOINs no SQL <span class="id">#F114</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_138"><label for="p1_138">JOINs no SQL <span class="id">#F115</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_139"><label for="p1_139">JOINs no SQL <span class="id">#F116</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_140"><label for="p1_140">JOINs no SQL <span class="id">#F117</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_141"><label for="p1_141">JOINs no SQL <span class="id">#F118</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_142"><label for="p1_142">JOINs no SQL <span class="id">#F119</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_143"><label for="p1_143">JOINs no SQL <span class="id">#F120</span></label></div>
-
-  <div class="module-head">9. Group By + Joins</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_144"><label for="p1_144">Group By + Joins <span class="id">#F121</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_145"><label for="p1_145">Group By + Joins <span class="id">#F122</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_146"><label for="p1_146">Group By + Joins <span class="id">#F123</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_147"><label for="p1_147">Group By + Joins <span class="id">#F124</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_148"><label for="p1_148">Group By + Joins <span class="id">#F125</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_149"><label for="p1_149">Group By + Joins <span class="id">#F126</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_150"><label for="p1_150">Group By + Joins <span class="id">#F127</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_151"><label for="p1_151">Group By + Joins <span class="id">#F128</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_152"><label for="p1_152">Group By + Joins <span class="id">#F129</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_153"><label for="p1_153">Group By + Joins <span class="id">#F130</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_154"><label for="p1_154">Group By + Joins <span class="id">#F131</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_155"><label for="p1_155">Group By + Joins <span class="id">#F132</span></label></div>
-
-  <div class="module-head">14. CRUD</div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_156"><label for="p1_156">CRUD <span class="id">#F210</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_157"><label for="p1_157">CRUD <span class="id">#F211</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_158"><label for="p1_158">CRUD <span class="id">#F212</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_159"><label for="p1_159">CRUD <span class="id">#F213</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_160"><label for="p1_160">CRUD <span class="id">#F214</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_161"><label for="p1_161">CRUD <span class="id">#F215</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_162"><label for="p1_162">CRUD <span class="id">#F216</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_163"><label for="p1_163">CRUD <span class="id">#F217</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_164"><label for="p1_164">CRUD <span class="id">#F218</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_165"><label for="p1_165">CRUD <span class="id">#F219</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_166"><label for="p1_166">CRUD <span class="id">#F220</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_167"><label for="p1_167">CRUD <span class="id">#F221</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_168"><label for="p1_168">CRUD <span class="id">#F222</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_169"><label for="p1_169">CRUD <span class="id">#F223</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_170"><label for="p1_170">CRUD <span class="id">#F224</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_171"><label for="p1_171">CRUD <span class="id">#F225</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_172"><label for="p1_172">CRUD <span class="id">#F226</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_173"><label for="p1_173">CRUD <span class="id">#F227</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_174"><label for="p1_174">CRUD <span class="id">#F228</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_175"><label for="p1_175">CRUD <span class="id">#F229</span></label></div>
-  <div class="lesson" data-prio="p1"><span class="prio p1">P1</span><input type="checkbox" id="p1_176"><label for="p1_176">CRUD <span class="id">#F230</span></label></div>
-
-  <!-- ======================= P2 ======================= -->
-  <h2>🟠 P2 — Depois do P1</h2>
-  <div class="callout c-orange"><strong>Foco:</strong> Git, Cypress, Testes de UI completos.</div>
+  <!-- ======================= FASE 2 ======================= -->
+  <div class="fase fase-2">
+    <span class="fase-tag">Fase 2 · Semanas 2–3</span>
+    <h2>🌿 Git + GitHub — Versionar</h2>
+    <p>Sem Git, seu portfólio não existe. Aprenda o básico e suba tudo o que fizer daqui pra frente. <strong>Entregável:</strong> repo <code>qa-junior-portfolio</code> público com README + 1 branch + 1 PR.</p>
+  </div>
 
   <div class="course-head">Ebac — GIT</div>
   <div class="module-head">10. GIT</div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_1"><label for="p2_1">GIT <span class="id">#F058</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_2"><label for="p2_2">GIT <span class="id">#F059</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_3"><label for="p2_3">GIT <span class="id">#F060</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_4"><label for="p2_4">GIT <span class="id">#F061</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_5"><label for="p2_5">GIT <span class="id">#F062</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_6"><label for="p2_6">GIT <span class="id">#F063</span></label></div>
+  <div class="lesson" data-prio="f2"><span class="prio f2">F2</span><input type="checkbox" id="f2_1"><label for="f2_1">GIT — Introdução <span class="id">#F058</span></label></div>
+  <div class="lesson" data-prio="f2"><span class="prio f2">F2</span><input type="checkbox" id="f2_2"><label for="f2_2">GIT — Instalação e configuração <span class="id">#F059</span></label></div>
+  <div class="lesson" data-prio="f2"><span class="prio f2">F2</span><input type="checkbox" id="f2_3"><label for="f2_3">GIT — add, commit, push <span class="id">#F060</span></label></div>
+  <div class="lesson" data-prio="f2"><span class="prio f2">F2</span><input type="checkbox" id="f2_4"><label for="f2_4">GIT — Branches <span class="id">#F061</span></label></div>
+  <div class="lesson" data-prio="f2"><span class="prio f2">F2</span><input type="checkbox" id="f2_5"><label for="f2_5">GIT — Merge e Pull Request <span class="id">#F062</span></label></div>
+  <div class="lesson" data-prio="f2"><span class="prio f2">F2</span><input type="checkbox" id="f2_6"><label for="f2_6">GitHub e portfólio <span class="id">#F063</span></label></div>
+
+  <!-- ======================= FASE 3 ======================= -->
+  <div class="fase fase-3">
+    <span class="fase-tag">Fase 3 · Semanas 3–5</span>
+    <h2>🗄️ SQL — Validar dados</h2>
+    <p>Depois de testar a API, você valida no banco se o dado foi gravado certo. Foco: SELECT, WHERE, GROUP BY, JOIN, CRUD. <strong>Entregável:</strong> <code>queries.sql</code> com 20 queries comentadas + prints no SSMS.</p>
+  </div>
+
+  <div class="course-head">SQL Impressionador — recorte essencial</div>
+  <div class="module-head">2. Banco de Dados e SQL — Introdução</div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_1"><label for="f3_1">Banco de Dados e SQL — Introdução <span class="id">#F006</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_2"><label for="f3_2">Banco de Dados e SQL — Introdução <span class="id">#F007</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_3"><label for="f3_3">Banco de Dados e SQL — Introdução <span class="id">#F008</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_4"><label for="f3_4">Banco de Dados e SQL — Introdução <span class="id">#F009</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_5"><label for="f3_5">Banco de Dados e SQL — Introdução <span class="id">#F010</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_6"><label for="f3_6">Banco de Dados e SQL — Introdução <span class="id">#F011</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_7"><label for="f3_7">Banco de Dados e SQL — Introdução <span class="id">#F012</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_8"><label for="f3_8">Banco de Dados e SQL — Introdução <span class="id">#F013</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_9"><label for="f3_9">Banco de Dados e SQL — Introdução <span class="id">#F014</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_10"><label for="f3_10">Banco de Dados e SQL — Introdução <span class="id">#F015</span></label></div>
+
+  <div class="module-head">3. Instalação SQL Server + SSMS</div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_11"><label for="f3_11">Instalação SQL Server + SSMS <span class="id">#F016</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_12"><label for="f3_12">Instalação SQL Server + SSMS <span class="id">#F017</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_13"><label for="f3_13">Instalação SQL Server + SSMS <span class="id">#F018</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_14"><label for="f3_14">Instalação SQL Server + SSMS <span class="id">#F019</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_15"><label for="f3_15">Instalação SQL Server + SSMS <span class="id">#F020</span></label></div>
+
+  <div class="module-head">4. Introdução ao SQL</div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_16"><label for="f3_16">Introdução ao SQL <span class="id">#F021</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_17"><label for="f3_17">Introdução ao SQL <span class="id">#F022</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_18"><label for="f3_18">Introdução ao SQL <span class="id">#F023</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_19"><label for="f3_19">Introdução ao SQL <span class="id">#F024</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_20"><label for="f3_20">Introdução ao SQL <span class="id">#F025</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_21"><label for="f3_21">Introdução ao SQL <span class="id">#F026</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_22"><label for="f3_22">Introdução ao SQL <span class="id">#F027</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_23"><label for="f3_23">Introdução ao SQL <span class="id">#F028</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_24"><label for="f3_24">Introdução ao SQL <span class="id">#F029</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_25"><label for="f3_25">Introdução ao SQL <span class="id">#F030</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_26"><label for="f3_26">Introdução ao SQL <span class="id">#F031</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_27"><label for="f3_27">Introdução ao SQL <span class="id">#F032</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_28"><label for="f3_28">Introdução ao SQL <span class="id">#F033</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_29"><label for="f3_29">Introdução ao SQL <span class="id">#F034</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_30"><label for="f3_30">Introdução ao SQL <span class="id">#F035</span></label></div>
+
+  <div class="module-head">5. Ordenando e filtrando dados</div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_31"><label for="f3_31">Ordenando e filtrando dados <span class="id">#F036</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_32"><label for="f3_32">Ordenando e filtrando dados <span class="id">#F037</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_33"><label for="f3_33">Ordenando e filtrando dados <span class="id">#F038</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_34"><label for="f3_34">Ordenando e filtrando dados <span class="id">#F039</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_35"><label for="f3_35">Ordenando e filtrando dados <span class="id">#F040</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_36"><label for="f3_36">Ordenando e filtrando dados <span class="id">#F041</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_37"><label for="f3_37">Ordenando e filtrando dados <span class="id">#F042</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_38"><label for="f3_38">Ordenando e filtrando dados <span class="id">#F043</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_39"><label for="f3_39">Ordenando e filtrando dados <span class="id">#F044</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_40"><label for="f3_40">Ordenando e filtrando dados <span class="id">#F045</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_41"><label for="f3_41">Ordenando e filtrando dados <span class="id">#F046</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_42"><label for="f3_42">Ordenando e filtrando dados <span class="id">#F047</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_43"><label for="f3_43">Ordenando e filtrando dados <span class="id">#F048</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_44"><label for="f3_44">Ordenando e filtrando dados <span class="id">#F049</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_45"><label for="f3_45">Ordenando e filtrando dados <span class="id">#F050</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_46"><label for="f3_46">Ordenando e filtrando dados <span class="id">#F051</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_47"><label for="f3_47">Ordenando e filtrando dados <span class="id">#F052</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_48"><label for="f3_48">Ordenando e filtrando dados <span class="id">#F053</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_49"><label for="f3_49">Ordenando e filtrando dados <span class="id">#F054</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_50"><label for="f3_50">Ordenando e filtrando dados <span class="id">#F055</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_51"><label for="f3_51">Ordenando e filtrando dados <span class="id">#F056</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_52"><label for="f3_52">Ordenando e filtrando dados <span class="id">#F057</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_53"><label for="f3_53">Ordenando e filtrando dados <span class="id">#F058</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_54"><label for="f3_54">Ordenando e filtrando dados <span class="id">#F059</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_55"><label for="f3_55">Ordenando e filtrando dados <span class="id">#F060</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_56"><label for="f3_56">Ordenando e filtrando dados <span class="id">#F061</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_57"><label for="f3_57">Ordenando e filtrando dados <span class="id">#F062</span></label></div>
+
+  <div class="module-head">6. Funções de Agregação</div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_58"><label for="f3_58">Funções de Agregação <span class="id">#F063</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_59"><label for="f3_59">Funções de Agregação <span class="id">#F064</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_60"><label for="f3_60">Funções de Agregação <span class="id">#F065</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_61"><label for="f3_61">Funções de Agregação <span class="id">#F066</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_62"><label for="f3_62">Funções de Agregação <span class="id">#F067</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_63"><label for="f3_63">Funções de Agregação <span class="id">#F068</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_64"><label for="f3_64">Funções de Agregação <span class="id">#F069</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_65"><label for="f3_65">Funções de Agregação <span class="id">#F070</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_66"><label for="f3_66">Funções de Agregação <span class="id">#F071</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_67"><label for="f3_67">Funções de Agregação <span class="id">#F072</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_68"><label for="f3_68">Funções de Agregação <span class="id">#F073</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_69"><label for="f3_69">Funções de Agregação <span class="id">#F074</span></label></div>
+
+  <div class="module-head">7. Criando agrupamentos no SQL</div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_70"><label for="f3_70">Criando agrupamentos no SQL <span class="id">#F075</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_71"><label for="f3_71">Criando agrupamentos no SQL <span class="id">#F076</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_72"><label for="f3_72">Criando agrupamentos no SQL <span class="id">#F077</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_73"><label for="f3_73">Criando agrupamentos no SQL <span class="id">#F078</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_74"><label for="f3_74">Criando agrupamentos no SQL <span class="id">#F079</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_75"><label for="f3_75">Criando agrupamentos no SQL <span class="id">#F080</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_76"><label for="f3_76">Criando agrupamentos no SQL <span class="id">#F081</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_77"><label for="f3_77">Criando agrupamentos no SQL <span class="id">#F082</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_78"><label for="f3_78">Criando agrupamentos no SQL <span class="id">#F083</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_79"><label for="f3_79">Criando agrupamentos no SQL <span class="id">#F084</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_80"><label for="f3_80">Criando agrupamentos no SQL <span class="id">#F085</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_81"><label for="f3_81">Criando agrupamentos no SQL <span class="id">#F086</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_82"><label for="f3_82">Criando agrupamentos no SQL <span class="id">#F087</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_83"><label for="f3_83">Criando agrupamentos no SQL <span class="id">#F088</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_84"><label for="f3_84">Criando agrupamentos no SQL <span class="id">#F089</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_85"><label for="f3_85">Criando agrupamentos no SQL <span class="id">#F090</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_86"><label for="f3_86">Criando agrupamentos no SQL <span class="id">#F091</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_87"><label for="f3_87">Criando agrupamentos no SQL <span class="id">#F092</span></label></div>
+
+  <div class="module-head">8. JOINs no SQL</div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_88"><label for="f3_88">JOINs no SQL <span class="id">#F093</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_89"><label for="f3_89">JOINs no SQL <span class="id">#F094</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_90"><label for="f3_90">JOINs no SQL <span class="id">#F095</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_91"><label for="f3_91">JOINs no SQL <span class="id">#F096</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_92"><label for="f3_92">JOINs no SQL <span class="id">#F097</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_93"><label for="f3_93">JOINs no SQL <span class="id">#F098</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_94"><label for="f3_94">JOINs no SQL <span class="id">#F099</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_95"><label for="f3_95">JOINs no SQL <span class="id">#F100</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_96"><label for="f3_96">JOINs no SQL <span class="id">#F101</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_97"><label for="f3_97">JOINs no SQL <span class="id">#F102</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_98"><label for="f3_98">JOINs no SQL <span class="id">#F103</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_99"><label for="f3_99">JOINs no SQL <span class="id">#F104</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_100"><label for="f3_100">JOINs no SQL <span class="id">#F105</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_101"><label for="f3_101">JOINs no SQL <span class="id">#F106</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_102"><label for="f3_102">JOINs no SQL <span class="id">#F107</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_103"><label for="f3_103">JOINs no SQL <span class="id">#F108</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_104"><label for="f3_104">JOINs no SQL <span class="id">#F109</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_105"><label for="f3_105">JOINs no SQL <span class="id">#F110</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_106"><label for="f3_106">JOINs no SQL <span class="id">#F111</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_107"><label for="f3_107">JOINs no SQL <span class="id">#F112</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_108"><label for="f3_108">JOINs no SQL <span class="id">#F113</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_109"><label for="f3_109">JOINs no SQL <span class="id">#F114</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_110"><label for="f3_110">JOINs no SQL <span class="id">#F115</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_111"><label for="f3_111">JOINs no SQL <span class="id">#F116</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_112"><label for="f3_112">JOINs no SQL <span class="id">#F117</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_113"><label for="f3_113">JOINs no SQL <span class="id">#F118</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_114"><label for="f3_114">JOINs no SQL <span class="id">#F119</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_115"><label for="f3_115">JOINs no SQL <span class="id">#F120</span></label></div>
+
+  <div class="module-head">9. Group By + Joins</div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_116"><label for="f3_116">Group By + Joins <span class="id">#F121</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_117"><label for="f3_117">Group By + Joins <span class="id">#F122</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_118"><label for="f3_118">Group By + Joins <span class="id">#F123</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_119"><label for="f3_119">Group By + Joins <span class="id">#F124</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_120"><label for="f3_120">Group By + Joins <span class="id">#F125</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_121"><label for="f3_121">Group By + Joins <span class="id">#F126</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_122"><label for="f3_122">Group By + Joins <span class="id">#F127</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_123"><label for="f3_123">Group By + Joins <span class="id">#F128</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_124"><label for="f3_124">Group By + Joins <span class="id">#F129</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_125"><label for="f3_125">Group By + Joins <span class="id">#F130</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_126"><label for="f3_126">Group By + Joins <span class="id">#F131</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_127"><label for="f3_127">Group By + Joins <span class="id">#F132</span></label></div>
+
+  <div class="module-head">14. CRUD</div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_128"><label for="f3_128">CRUD <span class="id">#F210</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_129"><label for="f3_129">CRUD <span class="id">#F211</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_130"><label for="f3_130">CRUD <span class="id">#F212</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_131"><label for="f3_131">CRUD <span class="id">#F213</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_132"><label for="f3_132">CRUD <span class="id">#F214</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_133"><label for="f3_133">CRUD <span class="id">#F215</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_134"><label for="f3_134">CRUD <span class="id">#F216</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_135"><label for="f3_135">CRUD <span class="id">#F217</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_136"><label for="f3_136">CRUD <span class="id">#F218</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_137"><label for="f3_137">CRUD <span class="id">#F219</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_138"><label for="f3_138">CRUD <span class="id">#F220</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_139"><label for="f3_139">CRUD <span class="id">#F221</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_140"><label for="f3_140">CRUD <span class="id">#F222</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_141"><label for="f3_141">CRUD <span class="id">#F223</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_142"><label for="f3_142">CRUD <span class="id">#F224</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_143"><label for="f3_143">CRUD <span class="id">#F225</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_144"><label for="f3_144">CRUD <span class="id">#F226</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_145"><label for="f3_145">CRUD <span class="id">#F227</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_146"><label for="f3_146">CRUD <span class="id">#F228</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_147"><label for="f3_147">CRUD <span class="id">#F229</span></label></div>
+  <div class="lesson" data-prio="f3"><span class="prio f3">F3</span><input type="checkbox" id="f3_148"><label for="f3_148">CRUD <span class="id">#F230</span></label></div>
+
+  <!-- ======================= FASE 4 ======================= -->
+  <div class="fase fase-4">
+    <span class="fase-tag">Fase 4 · Semanas 5–6</span>
+    <h2>📋 Jira + Bug Report — Reportar</h2>
+    <p>Reportar bug é o que o time espera de você no primeiro dia. Aprenda a escrever bug report claro e a usar Jira/Trello. <strong>Entregável:</strong> 5 bugs cadastrados com passos + print do board.</p>
+  </div>
+
+  <div class="course-head">Conceito: bug report e severidade (Júlio)</div>
+  <div class="module-head">13. Gerindo Inconsistências</div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_1"><label for="f4_1">Gerindo Inconsistências <span class="id">#F244</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_2"><label for="f4_2">Gerindo Inconsistências <span class="id">#F245</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_3"><label for="f4_3">Gerindo Inconsistências <span class="id">#F246</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_4"><label for="f4_4">Gerindo Inconsistências <span class="id">#F247</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_5"><label for="f4_5">Gerindo Inconsistências <span class="id">#F248</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_6"><label for="f4_6">Gerindo Inconsistências <span class="id">#F249</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_7"><label for="f4_7">Gerindo Inconsistências <span class="id">#F250</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_8"><label for="f4_8">Gerindo Inconsistências <span class="id">#F251</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_9"><label for="f4_9">Gerindo Inconsistências <span class="id">#F252</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_10"><label for="f4_10">Gerindo Inconsistências <span class="id">#F253</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_11"><label for="f4_11">Gerindo Inconsistências <span class="id">#F254</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_12"><label for="f4_12">Gerindo Inconsistências <span class="id">#F255</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_13"><label for="f4_13">Gerindo Inconsistências <span class="id">#F256</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_14"><label for="f4_14">Gerindo Inconsistências <span class="id">#F257</span></label></div>
+
+  <div class="course-head">Ebac — Planejamento e estratégia (contexto de bug)</div>
+  <div class="module-head">5. Planejamento e estratégia de teste</div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_15"><label for="f4_15">Planejamento e estratégia de teste <span class="id">#F027</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_16"><label for="f4_16">Planejamento e estratégia de teste <span class="id">#F028</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_17"><label for="f4_17">Planejamento e estratégia de teste <span class="id">#F029</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_18"><label for="f4_18">Planejamento e estratégia de teste <span class="id">#F030</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_19"><label for="f4_19">Planejamento e estratégia de teste <span class="id">#F031</span></label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_20"><label for="f4_20">Planejamento e estratégia de teste <span class="id">#F032</span></label></div>
+
+  <div class="course-head">Jira / Trello — aprender por fora</div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_21"><label for="f4_21"><b>Jira</b> — criar conta grátis, criar projeto, cadastrar 5 bugs, mover no board</label></div>
+  <div class="lesson" data-prio="f4"><span class="prio f4">F4</span><input type="checkbox" id="f4_22"><label for="f4_22"><b>Trello</b> (alternativa) — board Backlog → Em teste → Bug → Concluído</label></div>
+
+  <!-- ======================= FASE 5 ======================= -->
+  <div class="fase fase-5">
+    <span class="fase-tag">Fase 5 · Semanas 6–8</span>
+    <h2>🌲 Cypress — Automação de UI</h2>
+    <p>Só depois de dominar Postman, Git, SQL e bug report. Cypress é diferencial para júnior, não obrigatório. <strong>Entregável:</strong> 3 testes (login, busca, cadastro) + Page Objects + CI com GitHub Actions.</p>
+  </div>
+
+  <div class="course-head">Ebac — Testes de UI (conceito)</div>
+  <div class="module-head">9. Testes de UI</div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_1"><label for="f5_1">Testes de UI <span class="id">#F052</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_2"><label for="f5_2">Testes de UI <span class="id">#F053</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_3"><label for="f5_3">Testes de UI <span class="id">#F054</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_4"><label for="f5_4">Testes de UI <span class="id">#F055</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_5"><label for="f5_5">Testes de UI <span class="id">#F056</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_6"><label for="f5_6">Testes de UI <span class="id">#F057</span></label></div>
 
   <div class="course-head">Ebac — Cypress Parte 1</div>
   <div class="module-head">11. Automação de UI com Cypress — Parte 1</div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_7"><label for="p2_7">Automação de UI com Cypress — Parte 1 <span class="id">#F064</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_8"><label for="p2_8">Automação de UI com Cypress — Parte 1 <span class="id">#F065</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_9"><label for="p2_9">Automação de UI com Cypress — Parte 1 <span class="id">#F066</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_10"><label for="p2_10">Automação de UI com Cypress — Parte 1 <span class="id">#F067</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_11"><label for="p2_11">Automação de UI com Cypress — Parte 1 <span class="id">#F068</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_7"><label for="f5_7">Cypress — Introdução <span class="id">#F064</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_8"><label for="f5_8">Cypress — Instalação <span class="id">#F065</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_9"><label for="f5_9">Cypress — Primeiro teste <span class="id">#F066</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_10"><label for="f5_10">Cypress — Asserções <span class="id">#F067</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_11"><label for="f5_11">Cypress — Boas práticas <span class="id">#F068</span></label></div>
 
   <div class="course-head">Ebac — Cypress Parte 2</div>
   <div class="module-head">12. Automação de UI com Cypress — Parte 2</div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_12"><label for="p2_12">Automação de UI com Cypress — Parte 2 <span class="id">#F069</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_13"><label for="p2_13">Automação de UI com Cypress — Parte 2 <span class="id">#F070</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_14"><label for="p2_14">Automação de UI com Cypress — Parte 2 <span class="id">#F071</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_15"><label for="p2_15">Automação de UI com Cypress — Parte 2 <span class="id">#F072</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_16"><label for="p2_16">Automação de UI com Cypress — Parte 2 <span class="id">#F073</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_17"><label for="p2_17">Automação de UI com Cypress — Parte 2 <span class="id">#F074</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_12"><label for="f5_12">Cypress — Page Objects <span class="id">#F069</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_13"><label for="f5_13">Cypress — Custom commands <span class="id">#F070</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_14"><label for="f5_14">Cypress — Fixtures <span class="id">#F071</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_15"><label for="f5_15">Cypress — Esperas <span class="id">#F072</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_16"><label for="f5_16">Cypress — Organização <span class="id">#F073</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_17"><label for="f5_17">Cypress — Boas práticas finais <span class="id">#F074</span></label></div>
 
-  <div class="course-head">Ebac — Testes de UI</div>
-  <div class="module-head">9. Testes de UI</div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_18"><label for="p2_18">Testes de UI <span class="id">#F052</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_19"><label for="p2_19">Testes de UI <span class="id">#F053</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_20"><label for="p2_20">Testes de UI <span class="id">#F054</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_21"><label for="p2_21">Testes de UI <span class="id">#F055</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_22"><label for="p2_22">Testes de UI <span class="id">#F056</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_23"><label for="p2_23">Testes de UI <span class="id">#F057</span></label></div>
-
-  <div class="course-head">Ebac — Cypress "indo além" e projeto completo</div>
+  <div class="course-head">Ebac — Cypress avançado e projeto completo</div>
   <div class="module-head">22. Cypress — Indo além do básico</div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_24"><label for="p2_24">Cypress — Indo além do básico <span class="id">#F128</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_25"><label for="p2_25">Cypress — Indo além do básico <span class="id">#F129</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_26"><label for="p2_26">Cypress — Indo além do básico <span class="id">#F130</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_27"><label for="p2_27">Cypress — Indo além do básico <span class="id">#F131</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_28"><label for="p2_28">Cypress — Indo além do básico <span class="id">#F132</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_29"><label for="p2_29">Cypress — Indo além do básico <span class="id">#F133</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_18"><label for="f5_18">Cypress — Indo além do básico <span class="id">#F128</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_19"><label for="f5_19">Cypress — Indo além do básico <span class="id">#F129</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_20"><label for="f5_20">Cypress — Indo além do básico <span class="id">#F130</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_21"><label for="f5_21">Cypress — Indo além do básico <span class="id">#F131</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_22"><label for="f5_22">Cypress — Indo além do básico <span class="id">#F132</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_23"><label for="f5_23">Cypress — Indo além do básico <span class="id">#F133</span></label></div>
   <div class="module-head">23. Cypress — Projeto completo</div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_30"><label for="p2_30">Cypress — Projeto completo <span class="id">#F134</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_31"><label for="p2_31">Cypress — Projeto completo <span class="id">#F135</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_32"><label for="p2_32">Cypress — Projeto completo <span class="id">#F136</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_33"><label for="p2_33">Cypress — Projeto completo <span class="id">#F137</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_34"><label for="p2_34">Cypress — Projeto completo <span class="id">#F138</span></label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="p2_35"><label for="p2_35">Cypress — Projeto completo <span class="id">#F139</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_24"><label for="f5_24">Cypress — Projeto completo <span class="id">#F134</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_25"><label for="f5_25">Cypress — Projeto completo <span class="id">#F135</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_26"><label for="f5_26">Cypress — Projeto completo <span class="id">#F136</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_27"><label for="f5_27">Cypress — Projeto completo <span class="id">#F137</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_28"><label for="f5_28">Cypress — Projeto completo <span class="id">#F138</span></label></div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_29"><label for="f5_29">Cypress — Projeto completo <span class="id">#F139</span></label></div>
 
-  <!-- ======================= P3 ======================= -->
-  <h2>🟡 P3 — Opcional (quando sobrar tempo)</h2>
-  <div class="callout c-yellow"><strong>Foco:</strong> DevOps, Docker, CI, Performance, Métricas, Segurança. Escolha 2–3.</div>
+  <div class="course-head">GitHub Actions — aprender por fora</div>
+  <div class="lesson" data-prio="f5"><span class="prio f5">F5</span><input type="checkbox" id="f5_30"><label for="f5_30"><b>GitHub Actions</b> — rodar seus testes Cypress num workflow (docs oficiais + 1 vídeo)</label></div>
+
+  <!-- ======================= FASE 6 ======================= -->
+  <div class="fase fase-6">
+    <span class="fase-tag">Fase 6 · Semanas 8–10</span>
+    <h2>🐳 CI + Docker — Integrar</h2>
+    <p>Diferencial competitivo. Escolha 2–3 módulos conforme a vaga. <strong>Entregável:</strong> pipeline rodando Cypress + container de banco + docker-compose.yml no GitHub.</p>
+  </div>
 
   <div class="course-head">Ebac — DevOps</div>
   <div class="module-head">15. DevOps</div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_1"><label for="p3_1">DevOps <span class="id">#F088</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_2"><label for="p3_2">DevOps <span class="id">#F089</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_3"><label for="p3_3">DevOps <span class="id">#F090</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_4"><label for="p3_4">DevOps <span class="id">#F091</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_5"><label for="p3_5">DevOps <span class="id">#F092</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_6"><label for="p3_6">DevOps <span class="id">#F093</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_7"><label for="p3_7">DevOps <span class="id">#F094</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_1"><label for="f6_1">DevOps <span class="id">#F088</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_2"><label for="f6_2">DevOps <span class="id">#F089</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_3"><label for="f6_3">DevOps <span class="id">#F090</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_4"><label for="f6_4">DevOps <span class="id">#F091</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_5"><label for="f6_5">DevOps <span class="id">#F092</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_6"><label for="f6_6">DevOps <span class="id">#F093</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_7"><label for="f6_7">DevOps <span class="id">#F094</span></label></div>
 
   <div class="course-head">Ebac — Docker for Testers</div>
   <div class="module-head">27. Docker for Testers</div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_8"><label for="p3_8">Docker for Testers <span class="id">#F158</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_9"><label for="p3_9">Docker for Testers <span class="id">#F159</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_10"><label for="p3_10">Docker for Testers <span class="id">#F160</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_11"><label for="p3_11">Docker for Testers <span class="id">#F161</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_12"><label for="p3_12">Docker for Testers <span class="id">#F162</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_8"><label for="f6_8">Docker — Introdução <span class="id">#F158</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_9"><label for="f6_9">Docker — Instalação <span class="id">#F159</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_10"><label for="f6_10">Docker — Containers e imagens <span class="id">#F160</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_11"><label for="f6_11">Docker — Docker Compose <span class="id">#F161</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_12"><label for="f6_12">Docker — Docker para testes <span class="id">#F162</span></label></div>
 
   <div class="course-head">Ebac — Integração Contínua</div>
   <div class="module-head">26. Testes em Integração Contínua</div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_13"><label for="p3_13">Testes em Integração Contínua <span class="id">#F153</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_14"><label for="p3_14">Testes em Integração Contínua <span class="id">#F154</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_15"><label for="p3_15">Testes em Integração Contínua <span class="id">#F155</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_16"><label for="p3_16">Testes em Integração Contínua <span class="id">#F156</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_17"><label for="p3_17">Testes em Integração Contínua <span class="id">#F157</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_13"><label for="f6_13">Integração Contínua <span class="id">#F153</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_14"><label for="f6_14">Integração Contínua <span class="id">#F154</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_15"><label for="f6_15">Integração Contínua <span class="id">#F155</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_16"><label for="f6_16">Integração Contínua <span class="id">#F156</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_17"><label for="f6_17">Integração Contínua <span class="id">#F157</span></label></div>
 
   <div class="course-head">Ebac — Performance</div>
   <div class="module-head">18. Testes de Performance</div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_18"><label for="p3_18">Testes de Performance <span class="id">#F103</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_19"><label for="p3_19">Testes de Performance <span class="id">#F104</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_20"><label for="p3_20">Testes de Performance <span class="id">#F105</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_21"><label for="p3_21">Testes de Performance <span class="id">#F106</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_22"><label for="p3_22">Testes de Performance <span class="id">#F107</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_23"><label for="p3_23">Testes de Performance <span class="id">#F108</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_18"><label for="f6_18">Testes de Performance <span class="id">#F103</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_19"><label for="f6_19">Testes de Performance <span class="id">#F104</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_20"><label for="f6_20">Testes de Performance <span class="id">#F105</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_21"><label for="f6_21">Testes de Performance <span class="id">#F106</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_22"><label for="f6_22">Testes de Performance <span class="id">#F107</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_23"><label for="f6_23">Testes de Performance <span class="id">#F108</span></label></div>
 
   <div class="course-head">Ebac — Métricas</div>
   <div class="module-head">31. Métricas de Qualidade</div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_24"><label for="p3_24">Métricas de Qualidade <span class="id">#F179</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_25"><label for="p3_25">Métricas de Qualidade <span class="id">#F180</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_26"><label for="p3_26">Métricas de Qualidade <span class="id">#F181</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_27"><label for="p3_27">Métricas de Qualidade <span class="id">#F182</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_28"><label for="p3_28">Métricas de Qualidade <span class="id">#F183</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_24"><label for="f6_24">Métricas de Qualidade <span class="id">#F179</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_25"><label for="f6_25">Métricas de Qualidade <span class="id">#F180</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_26"><label for="f6_26">Métricas de Qualidade <span class="id">#F181</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_27"><label for="f6_27">Métricas de Qualidade <span class="id">#F182</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_28"><label for="f6_28">Métricas de Qualidade <span class="id">#F183</span></label></div>
 
   <div class="course-head">Ebac — Segurança</div>
   <div class="module-head">33. Testes de Segurança</div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_29"><label for="p3_29">Testes de Segurança <span class="id">#F189</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_30"><label for="p3_30">Testes de Segurança <span class="id">#F190</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_31"><label for="p3_31">Testes de Segurança <span class="id">#F191</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_32"><label for="p3_32">Testes de Segurança <span class="id">#F192</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_33"><label for="p3_33">Testes de Segurança <span class="id">#F193</span></label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="p3_34"><label for="p3_34">Testes de Segurança <span class="id">#F194</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_29"><label for="f6_29">Testes de Segurança <span class="id">#F189</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_30"><label for="f6_30">Testes de Segurança <span class="id">#F190</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_31"><label for="f6_31">Testes de Segurança <span class="id">#F191</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_32"><label for="f6_32">Testes de Segurança <span class="id">#F192</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_33"><label for="f6_33">Testes de Segurança <span class="id">#F193</span></label></div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_34"><label for="f6_34">Testes de Segurança <span class="id">#F194</span></label></div>
 
-  <!-- ======================= P4 ======================= -->
-  <h2>🟣 P4 — Só se a vaga pedir</h2>
-  <div class="callout c-purple"><strong>Foco:</strong> mobile, Nightwatch, Júlio de Lima, bônus. Deixe para quando estiver aplicando.</div>
+  <div class="course-head">TestRail / Qase — aprender por fora</div>
+  <div class="lesson" data-prio="f6"><span class="prio f6">F6</span><input type="checkbox" id="f6_35"><label for="f6_35"><b>TestRail ou Qase</b> (free tier) — conhecer interface de gestão de testes</label></div>
+
+  <!-- ======================= FASE 7 ======================= -->
+  <div class="fase fase-7">
+    <span class="fase-tag">Fase 7 · Depois de empregado</span>
+    <h2>🧠 Opcional — só se a vaga pedir</h2>
+    <p>Mobile, Nightwatch, Júlio consulta, programação. Deixe para quando estiver aplicando ou empregado. Não desvia do foco agora.</p>
+  </div>
 
   <div class="course-head">Ebac — Mobile</div>
   <div class="module-head">16. Testes Mobile — Parte 1</div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_1"><label for="p4_1">Testes Mobile — Parte 1 <span class="id">#F095</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_2"><label for="p4_2">Testes Mobile — Parte 1 <span class="id">#F096</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_3"><label for="p4_3">Testes Mobile — Parte 1 <span class="id">#F097</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_4"><label for="p4_4">Testes Mobile — Parte 1 <span class="id">#F098</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_1"><label for="f7_1">Testes Mobile — Parte 1 <span class="id">#F095</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_2"><label for="f7_2">Testes Mobile — Parte 1 <span class="id">#F096</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_3"><label for="f7_3">Testes Mobile — Parte 1 <span class="id">#F097</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_4"><label for="f7_4">Testes Mobile — Parte 1 <span class="id">#F098</span></label></div>
   <div class="module-head">17. Testes Mobile — Parte 2</div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_5"><label for="p4_5">Testes Mobile — Parte 2 <span class="id">#F099</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_6"><label for="p4_6">Testes Mobile — Parte 2 <span class="id">#F100</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_7"><label for="p4_7">Testes Mobile — Parte 2 <span class="id">#F101</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_8"><label for="p4_8">Testes Mobile — Parte 2 <span class="id">#F102</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_5"><label for="f7_5">Testes Mobile — Parte 2 <span class="id">#F099</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_6"><label for="f7_6">Testes Mobile — Parte 2 <span class="id">#F100</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_7"><label for="f7_7">Testes Mobile — Parte 2 <span class="id">#F101</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_8"><label for="f7_8">Testes Mobile — Parte 2 <span class="id">#F102</span></label></div>
 
   <div class="course-head">Júlio de Lima — consulta pontual</div>
   <div class="module-head">08. Identificando o que testar</div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_9"><label for="p4_9">Identificando o que testar <span class="id">#F112</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_10"><label for="p4_10">Identificando o que testar <span class="id">#F113</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_11"><label for="p4_11">Identificando o que testar <span class="id">#F114</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_12"><label for="p4_12">Identificando o que testar <span class="id">#F115</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_13"><label for="p4_13">Identificando o que testar <span class="id">#F116</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_14"><label for="p4_14">Identificando o que testar <span class="id">#F117</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_15"><label for="p4_15">Identificando o que testar <span class="id">#F118</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_16"><label for="p4_16">Identificando o que testar <span class="id">#F119</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_17"><label for="p4_17">Identificando o que testar <span class="id">#F120</span></label></div>
-  <div class="module-head">09. Testes de API REST</div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_18"><label for="p4_18">Testes de API REST <span class="id">#F158</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_19"><label for="p4_19">Testes de API REST <span class="id">#F159</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_20"><label for="p4_20">Testes de API REST <span class="id">#F160</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_21"><label for="p4_21">Testes de API REST <span class="id">#F161</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_22"><label for="p4_22">Testes de API REST <span class="id">#F162</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_23"><label for="p4_23">Testes de API REST <span class="id">#F163</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_24"><label for="p4_24">Testes de API REST <span class="id">#F164</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_25"><label for="p4_25">Testes de API REST <span class="id">#F165</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_26"><label for="p4_26">Testes de API REST <span class="id">#F166</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_27"><label for="p4_27">Testes de API REST <span class="id">#F167</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_28"><label for="p4_28">Testes de API REST <span class="id">#F168</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_29"><label for="p4_29">Testes de API REST <span class="id">#F169</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_30"><label for="p4_30">Testes de API REST <span class="id">#F170</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_31"><label for="p4_31">Testes de API REST <span class="id">#F171</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_32"><label for="p4_32">Testes de API REST <span class="id">#F172</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_33"><label for="p4_33">Testes de API REST <span class="id">#F173</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_34"><label for="p4_34">Testes de API REST <span class="id">#F174</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_35"><label for="p4_35">Testes de API REST <span class="id">#F175</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_36"><label for="p4_36">Testes de API REST <span class="id">#F176</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_37"><label for="p4_37">Testes de API REST <span class="id">#F177</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_38"><label for="p4_38">Testes de API REST <span class="id">#F178</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_39"><label for="p4_39">Testes de API REST <span class="id">#F179</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_40"><label for="p4_40">Testes de API REST <span class="id">#F180</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_41"><label for="p4_41">Testes de API REST <span class="id">#F181</span></label></div>
-  <div class="module-head">13. Gerindo Inconsistências</div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_42"><label for="p4_42">Gerindo Inconsistências <span class="id">#F244</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_43"><label for="p4_43">Gerindo Inconsistências <span class="id">#F245</span></label></div>
-  <div class="lesson" data-prio="p4"><span class="prio p4">P4</span><input type="checkbox" id="p4_44"><label for="p4_44">Gerindo Inconsistências <span class="id">#F246</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_9"><label for="f7_9">Identificando o que testar <span class="id">#F112</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_10"><label for="f7_10">Identificando o que testar <span class="id">#F113</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_11"><label for="f7_11">Identificando o que testar <span class="id">#F114</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_12"><label for="f7_12">Identificando o que testar <span class="id">#F115</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_13"><label for="f7_13">Identificando o que testar <span class="id">#F116</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_14"><label for="f7_14">Identificando o que testar <span class="id">#F117</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_15"><label for="f7_15">Identificando o que testar <span class="id">#F118</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_16"><label for="f7_16">Identificando o que testar <span class="id">#F119</span></label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_17"><label for="f7_17">Identificando o que testar <span class="id">#F120</span></label></div>
 
-  <!-- ======================= LACUNAS ======================= -->
-  <h2>🧩 Lacunas dos cursos — aprenda por fora</h2>
-  <div class="callout c-blue">Nenhum curso cobre bem estas ferramentas. São simples e valem muito no currículo.</div>
+  <div class="course-head">Programação (só depois de P1–P6)</div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_18"><label for="f7_18"><b>Lógica de programação</b> — Curso em Vídeo (Gustavo Guanabara), gratuito, ~15h</label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_19"><label for="f7_19"><b>JavaScript moderno</b> — Curso em Vídeo (Gustavo Guanabara), gratuito, ~40h</label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_20"><label for="f7_20"><b>Java básico</b> — Loiane Groner — só se for usar Selenium/Appium</label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_21"><label for="f7_21"><b>Júlio — Nivelamento Java e SQL</b> <span class="id">#F071–#F101</span> — consulta pontual</label></div>
+  <div class="lesson" data-prio="f7"><span class="prio f7">F7</span><input type="checkbox" id="f7_22"><label for="f7_22"><b>Pessoni — Bônus Algoritmos e Lógica</b> <span class="id">#F094–#F095</span> — introdução rasa</label></div>
 
-  <div class="course-head">Aprender por fora</div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="e1"><label for="e1"><b>Jira</b> — criar projeto, abrir bug, mover card (YouTube: "Jira para QA iniciante")</label></div>
-  <div class="lesson" data-prio="p2"><span class="prio p2">P2</span><input type="checkbox" id="e2"><label for="e2"><b>GitHub Actions</b> — rodar seus testes Cypress num workflow (docs oficiais + 1 vídeo)</label></div>
-  <div class="lesson" data-prio="p3"><span class="prio p3">P3</span><input type="checkbox" id="e3"><label for="e3"><b>TestRail ou Qase</b> (free tier) — conhecer interface de gestão de testes</label></div>
-
-  <!-- ======================= PROGRAMAÇÃO POR FORA ======================= -->
-  <h2>💻 Programação — aprender por fora (opcional, depois do P2)</h2>
-  <div class="callout c-purple">
-    <strong>Quando fazer:</strong> só depois de terminar P1 e P2, ou quando travar em algo de JavaScript/Java que o curso não explica a fundo.
-    Não pare o plano agora para fazer curso de programação — o Cypress e o REST Assured te dão o suficiente para QA Júnior.
-  </div>
-
-  <div class="course-head">Lógica e linguagens (gratuito)</div>
-  <div class="lesson" data-prio="prog"><span class="prio p4">P4</span><input type="checkbox" id="prog_1"><label for="prog_1"><b>Lógica de programação</b> — Curso em Vídeo (Gustavo Guanabara), gratuito, ~15h</label></div>
-  <div class="lesson" data-prio="prog"><span class="prio p4">P4</span><input type="checkbox" id="prog_2"><label for="prog_2"><b>JavaScript moderno</b> — Curso em Vídeo (Gustavo Guanabara), gratuito, ~40h</label></div>
-  <div class="lesson" data-prio="prog"><span class="prio p4">P4</span><input type="checkbox" id="prog_3"><label for="prog_3"><b>Java básico</b> — Loiane Groner (loiane.training), gratuito — só se for usar Selenium/Appium com Java</label></div>
-
-  <div class="course-head">Consulta pontual (dentro dos cursos que você já tem)</div>
-  <div class="lesson" data-prio="prog"><span class="prio p4">P4</span><input type="checkbox" id="prog_4"><label for="prog_4"><b>Júlio de Lima — Nivelamento Técnico de Programação em Java e SQL</b> <span class="id">#F071–#F101</span> — módulo completo, mas só faça se quiser base de Java</label></div>
-  <div class="lesson" data-prio="prog"><span class="prio p4">P4</span><input type="checkbox" id="prog_5"><label for="prog_5"><b>Pessoni — BONUS Algoritmos, Lógica e Programação JAVA</b> <span class="id">#F094–#F095</span> — só 2 aulas, introdução rasa</label></div>
-
-  <div class="callout c-green">
-    <strong>Regra prática:</strong> se durante o Cypress você não entender o que é uma <code>Promise</code>, um <code>callback</code> ou <code>async/await</code>, aí sim pare 1–2h e assista um vídeo pontual no YouTube. Não faça curso completo de programação antes de terminar P1 e P2.
-  </div>
-
-  <!-- ======================= FERRAMENTAS ======================= -->
-  <h2>🧰 Ferramentas por prioridade</h2>
+  <!-- ======================= TABELA DE FERRAMENTAS ======================= -->
+  <h2>🧰 Ferramentas por fase (ordem de aprendizado)</h2>
   <table>
-    <tr><th>Prioridade</th><th>Ferramenta</th><th>Onde aprender</th><th>Para quê</th></tr>
-    <tr><td><span class="prio p1">P1</span></td><td>Postman / Insomnia</td><td>Pessoni #F016–#F021</td><td>Testar API REST manualmente</td></tr>
-    <tr><td><span class="prio p1">P1</span></td><td><b>Java + IntelliJ IDEA</b></td><td>Pessoni #F016–#F021</td><td>Automação de API com REST Assured <em>(Java aplicado a QA — não é curso de programação)</em></td></tr>
-    <tr><td><span class="prio p1">P1</span></td><td>SQL Server + SSMS</td><td>SQL Impressionador</td><td>Queries e banco de dados</td></tr>
-    <tr><td><span class="prio p2">P2</span></td><td>Git + GitHub</td><td>Ebac #F058–#F063</td><td>Versionar testes e portfólio</td></tr>
-    <tr><td><span class="prio p2">P2</span></td><td>Cypress</td><td>Ebac #F064–#F074</td><td>Automação de UI</td></tr>
-    <tr><td><span class="prio p2">P2</span></td><td><b>JavaScript (via Cypress)</b></td><td>Ebac #F064–#F074</td><td>Automação de UI <em>(JS aplicado a testes)</em></td></tr>
-    <tr><td><span class="prio p2">P2</span></td><td>VS Code + Node/NPM</td><td>Nightwatch #F02–#F15</td><td>Editor e runtime</td></tr>
-    <tr><td><span class="prio p2">P2</span></td><td>Jira / Trello</td><td>Por fora (lacuna)</td><td>Gestão de bugs</td></tr>
-    <tr><td><span class="prio p3">P3</span></td><td>GitHub Actions / Jenkins</td><td>Ebac #F153–#F157</td><td>CI rodando testes</td></tr>
-    <tr><td><span class="prio p3">P3</span></td><td>Docker</td><td>Ebac #F158–#F162</td><td>Subir ambiente de teste</td></tr>
-    <tr><td><span class="prio p3">P3</span></td><td>JMeter / k6</td><td>Ebac #F103–#F108</td><td>Testes de performance</td></tr>
-    <tr><td><span class="prio p4">P4</span></td><td>Appium + Android Studio</td><td>Pessoni / Ebac mobile</td><td>Testes mobile</td></tr>
-    <tr><td><span class="prio p4">P4</span></td><td>Nightwatch.js</td><td>QA Ninja</td><td>Só se a vaga pedir</td></tr>
+    <tr><th>Fase</th><th>Ferramenta</th><th>Onde aprender</th><th>Entregável</th></tr>
+    <tr><td><span class="prio f1">F1</span></td><td><b>Postman</b></td><td>Pessoni #F016–#F021 + Júlio #F158–#F172</td><td>Coleção com 5 GET + 2 POST + prints</td></tr>
+    <tr><td><span class="prio f2">F2</span></td><td><b>Git + GitHub</b></td><td>Ebac #F058–#F063</td><td>Repo <code>qa-junior-portfolio</code> + 1 PR</td></tr>
+    <tr><td><span class="prio f3">F3</span></td><td><b>SQL Server + SSMS</b></td><td>SQL Impressionador (módulos 2–14)</td><td><code>queries.sql</code> com 20 queries comentadas</td></tr>
+    <tr><td><span class="prio f4">F4</span></td><td><b>Jira / Trello</b></td><td>Por fora + Júlio #F244–#F257</td><td>5 bugs cadastrados + print do board</td></tr>
+    <tr><td><span class="prio f5">F5</span></td><td><b>Cypress</b></td><td>Ebac #F052–#F074, #F128–#F139</td><td>3 testes + Page Objects + CI</td></tr>
+    <tr><td><span class="prio f5">F5</span></td><td><b>GitHub Actions</b></td><td>Por fora</td><td>Workflow rodando Cypress</td></tr>
+    <tr><td><span class="prio f6">F6</span></td><td><b>Docker</b></td><td>Ebac #F158–#F162</td><td><code>docker-compose.yml</code> + container de banco</td></tr>
+    <tr><td><span class="prio f6">F6</span></td><td><b>Jenkins</b></td><td>Ebac #F153–#F157</td><td><code>Jenkinsfile</code> + print do pipeline</td></tr>
+    <tr><td><span class="prio f6">F6</span></td><td><b>JMeter / k6</b></td><td>Ebac #F103–#F108</td><td>Plano de carga + relatório</td></tr>
+    <tr><td><span class="prio f6">F6</span></td><td><b>TestRail / Qase</b></td><td>Por fora</td><td>Conhecer interface (free tier)</td></tr>
+    <tr><td><span class="prio f7">F7</span></td><td><b>Appium</b></td><td>Ebac #F095–#F102</td><td>Só se a vaga pedir</td></tr>
+    <tr><td><span class="prio f7">F7</span></td><td><b>Nightwatch.js</b></td><td>QA Ninja</td><td>Só se a vaga pedir</td></tr>
   </table>
 
   <!-- ======================= CHECKLIST FINAL ======================= -->
@@ -543,11 +601,11 @@
 
   <button class="reset" onclick="resetar()">🔄 Resetar progresso</button>
 
-  <footer>Plano de Estudo QA · salve como <code>index.html</code> e publique no GitHub Pages</footer>
+  <footer>Plano de Estudo QA · Ordem Certa · salve como <code>index.html</code> e publique no GitHub Pages</footer>
 </div>
 
 <script>
-  const KEY = 'qa-plan-full-v2';
+  const KEY = 'qa-plan-ordem-certa-v1';
   const boxes = [...document.querySelectorAll('.lesson input[type=checkbox]')];
   const bar = document.getElementById('bar');
   const count = document.getElementById('count');
@@ -581,7 +639,6 @@
       const text = el.textContent.toLowerCase();
       let show = true;
       if(currentFilter==='pending') show = !checked;
-      else if(currentFilter==='prog') show = prio === 'prog';
       else if(currentFilter!=='all') show = prio === currentFilter;
       if(show && term) show = text.includes(term);
       el.classList.toggle('hidden', !show);
@@ -590,7 +647,7 @@
     document.querySelectorAll('.course-head').forEach(head=>{
       let next = head.nextElementSibling;
       let hasVisible = false;
-      while(next && !next.classList.contains('course-head') && !next.matches('h2')){
+      while(next && !next.classList.contains('course-head') && !next.matches('h2') && !next.classList.contains('fase')){
         if(next.classList.contains('lesson') && !next.classList.contains('hidden')) hasVisible = true;
         if(next.classList.contains('module-head') && !next.classList.contains('hidden')) hasVisible = true;
         next = next.nextElementSibling;
@@ -605,6 +662,18 @@
         next = next.nextElementSibling;
       }
       head.classList.toggle('hidden', !hasVisible);
+    });
+    // esconde fases vazias
+    document.querySelectorAll('.fase').forEach(fase=>{
+      let next = fase.nextElementSibling;
+      let hasVisible = false;
+      while(next && !next.classList.contains('fase') && !next.matches('h2')){
+        if(next.classList.contains('lesson') && !next.classList.contains('hidden')) hasVisible = true;
+        if(next.classList.contains('course-head') && !next.classList.contains('hidden')) hasVisible = true;
+        if(next.classList.contains('module-head') && !next.classList.contains('hidden')) hasVisible = true;
+        next = next.nextElementSibling;
+      }
+      fase.classList.toggle('hidden', !hasVisible);
     });
   }
   filters.forEach(btn=>btn.addEventListener('click', ()=>{
